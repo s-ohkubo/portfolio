@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX Personal Training Studio | 大阪のパーソナルジム</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --black-soft: #141414;
+  --black-mid: #1f1f1f;
+  --black-light: #2a2a2a;
+  --gold: #c9a961;
+  --gold-bright: #e8c878;
+  --gold-deep: #a08741;
+  --white: #ffffff;
+  --gray-light: #e8e8e8;
+  --gray-mid: #999999;
+  --gray-dark: #555555;
+  --shadow-gold: rgba(201, 169, 97, 0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ナビゲーション */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 22px 50px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.15);
+  transition: padding 0.3s, background 0.3s;
+}
+
+nav.scrolled {
+  padding: 14px 50px;
+  background: rgba(10, 10, 10, 0.95);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo-bar {
+  width: 4px;
+  height: 35px;
+  background: var(--gold);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.25em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.logo-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9px;
+  letter-spacing: 0.45em;
+  color: var(--gold);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 38px;
+  align-items: center;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: var(--gray-light);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav ul a:hover { color: var(--gold); }
+
+nav ul a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+nav ul a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--gold);
+  color: var(--black) !important;
+  padding: 12px 26px;
+  font-weight: 600;
+  letter-spacing: 0.2em !important;
+  transition: all 0.3s;
+}
+
+.nav-cta:hover {
+  background: var(--gold-bright);
+  transform: translateY(-2px);
+}
+
+.nav-cta::after { display: none; }
+
+/* ヒーローセクション */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 100px 50px 80px;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 70% 50%, rgba(201, 169, 97, 0.15) 0%, transparent 60%);
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+.hero-bg-text {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(180px, 28vw, 380px);
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.025);
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.hero-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  width: 100%;
+}
+
+.hero-content {
+  animation: fadeInLeft 1.2s ease-out;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 35px;
+}
+
+.hero-tag .line {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-tag-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 30px;
+}
+
+.hero-title .accent {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-subtitle {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--gray-light);
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+.hero-subtitle strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: 14px;
+  line-height: 2.2;
+  color: var(--gray-mid);
+  max-width: 500px;
+  margin-bottom: 45px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 50px;
+  background: var(--gold);
+  color: var(--black);
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gold-bright);
+  transition: left 0.4s;
+  z-index: 0;
+}
+
+.btn-primary:hover::before { left: 0; }
+
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 45px;
+  background: transparent;
+  color: var(--white);
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  border: 1px solid var(--white);
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 50px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.hero-stat-num small {
+  font-size: 16px;
+  color: var(--gold);
+  margin-left: 4px;
+}
+
+.hero-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gray-mid);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* ヒーロービジュアル */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 3/4;
+  animation: fadeInRight 1.4s 0.3s both ease-out;
+}
+
+.hero-visual-frame {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--black-light) 0%, var(--black-soft) 100%);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  overflow: hidden;
+}
+
+.hero-visual-frame::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-top: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+}
+
+.hero-visual-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  border-bottom: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+}
+
+.hero-visual-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hero-visual-mark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 200px;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+}
+
+.hero-visual-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.5em;
+  color: var(--white);
+  margin-top: 15px;
+}
+
+.hero-visual-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px auto;
+}
+
+.hero-visual-jp {
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--gray-mid);
+}
+
+/* セクション共通 */
+section {
+  padding: 130px 50px;
+  position: relative;
+}
+
+.section-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.section-tag .line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-tag-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-title .accent {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--gray-mid);
+  margin-bottom: 80px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2;
+}
+
+/* About */
+.about {
+  background: var(--black-soft);
+  position: relative;
+}
+
+.about::before {
+  content: 'ABOUT';
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 200px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.02);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+
+.about-headline .accent {
+  color: var(--gold);
+}
+
+.about-text {
+  font-size: 15px;
+  line-height: 2.4;
+  color: var(--gray-light);
+  letter-spacing: 0.05em;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Features */
+.features {
+  background: var(--black);
+}
+
+.features-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.feature-card {
+  background: var(--black-soft);
+  padding: 50px 35px;
+  position: relative;
+  border: 1px solid rgba(201, 169, 97, 0.15);
+  transition: all 0.4s;
+}
+
+.feature-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(201, 169, 97, 0.15);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--gold);
+}
+
+.feature-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 25px;
+}
+
+.feature-title-en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.feature-title-jp {
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.feature-desc {
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--gray-mid);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 968px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+/* Programs */
+.programs {
+  background: var(--black-soft);
+}
+
+.programs-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.program-card {
+  background: linear-gradient(135deg, var(--black-mid) 0%, var(--black-soft) 100%);
+  padding: 60px 45px;
+  position: relative;
+  border: 1px solid rgba(201, 169, 97, 0.1);
+  transition: all 0.4s;
+  overflow: hidden;
+}
+
+.program-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 70% 30%, rgba(201, 169, 97, 0.2) 0%, transparent 70%);
+}
+
+.program-card:hover {
+  border-color: var(--gold);
+  transform: scale(1.02);
+}
+
+.program-tag {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  padding: 6px 16px;
+  border: 1px solid var(--gold);
+  margin-bottom: 25px;
+}
+
+.program-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.program-name-jp {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--gray-light);
+  margin-bottom: 30px;
+}
+
+.program-desc {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--gray-mid);
+  margin-bottom: 30px;
+}
+
+.program-features {
+  list-style: none;
+  margin-bottom: 35px;
+}
+
+.program-features li {
+  font-size: 13px;
+  color: var(--gray-light);
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+
+.program-features li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 9px;
+  top: 13px;
+}
+
+.program-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 25px;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+.program-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.program-price small {
+  font-size: 14px;
+  color: var(--gray-mid);
+  letter-spacing: 0.1em;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.program-duration {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gray-mid);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .programs-grid { grid-template-columns: 1fr; }
+}
+
+/* Trainer */
+.trainer {
+  background: var(--black);
+  position: relative;
+}
+
+.trainer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.trainer-visual {
+  aspect-ratio: 3/4;
+  position: relative;
+  background: linear-gradient(135deg, var(--black-mid) 0%, var(--black-light) 100%);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  overflow: hidden;
+}
+
+.trainer-visual::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+}
+
+.trainer-visual::after {
+  content: '';
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  border-bottom: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+}
+
+.trainer-avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.trainer-avatar-mark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 200px;
+  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.trainer-avatar-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.4em;
+  color: var(--white);
+}
+
+.trainer-content {
+  text-align: left;
+}
+
+.trainer-content .section-tag {
+  justify-content: flex-start;
+  margin-bottom: 25px;
+}
+
+.trainer-role {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.trainer-name-en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.trainer-name-jp {
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  color: var(--gray-light);
+  margin-bottom: 35px;
+}
+
+.trainer-bio {
+  font-size: 14px;
+  line-height: 2.3;
+  color: var(--gray-mid);
+  letter-spacing: 0.05em;
+  margin-bottom: 35px;
+}
+
+.trainer-credentials {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 20px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+.trainer-credentials li {
+  list-style: none;
+  font-size: 12px;
+  color: var(--gray-light);
+  padding-left: 20px;
+  position: relative;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+.trainer-credentials li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .trainer-grid { grid-template-columns: 1fr; gap: 50px; }
+  .trainer-content { text-align: center; }
+  .trainer-content .section-tag { justify-content: center; }
+}
+
+/* Results */
+.results {
+  background: var(--black-soft);
+  position: relative;
+}
+
+.results-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.result-card {
+  text-align: center;
+  padding: 50px 25px;
+  background: var(--black);
+  border: 1px solid rgba(201, 169, 97, 0.15);
+  transition: all 0.3s;
+}
+
+.result-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
+
+.result-icon {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.result-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.result-num small {
+  font-size: 24px;
+  color: var(--gold);
+}
+
+.result-label {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--gray-mid);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .results-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Voices */
+.voices {
+  background: var(--black);
+}
+
+.voices-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.voice-card {
+  background: var(--black-soft);
+  padding: 45px 35px;
+  border: 1px solid rgba(201, 169, 97, 0.15);
+  position: relative;
+  transition: all 0.3s;
+}
+
+.voice-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
+
+.voice-quote {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 100px;
+  color: rgba(201, 169, 97, 0.2);
+  line-height: 1;
+}
+
+.voice-result {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.voice-result-item {
+  text-align: center;
+  flex: 1;
+}
+
+.voice-result-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.voice-result-num small {
+  font-size: 14px;
+  color: var(--gray-mid);
+}
+
+.voice-result-label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--gray-mid);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.voice-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.voice-text {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--gray-mid);
+  margin-bottom: 25px;
+}
+
+.voice-author {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--gray-mid);
+  padding-top: 20px;
+  border-top: 1px solid rgba(201, 169, 97, 0.15);
+}
+
+.voice-author strong {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  color: var(--white);
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Access */
+.access {
+  background: var(--black-soft);
+}
+
+.access-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.access-info {
+  display: grid;
+  gap: 0;
+}
+
+.access-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.15);
+  transition: padding 0.3s;
+}
+
+.access-row:hover { padding-left: 15px; }
+
+.access-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+}
+
+.access-value {
+  font-size: 14px;
+  color: var(--gray-light);
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+
+.access-map {
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--black) 0%, var(--black-mid) 100%);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.access-map::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+}
+
+.access-map::after {
+  content: '';
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  border-bottom: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+}
+
+.map-pin {
+  text-align: center;
+}
+
+.map-pin-mark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 100px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.map-pin-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .access-grid { grid-template-columns: 1fr; }
+}
+
+/* CTA */
+.cta {
+  background:
+    linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
+    linear-gradient(135deg, var(--black) 0%, var(--black-mid) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: 'PUSH YOUR LIMITS';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 18vw, 240px);
+  letter-spacing: 0.05em;
+  color: rgba(201, 169, 97, 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 96px);
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.cta-headline .accent {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.cta-message {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--gray-light);
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2.2;
+}
+
+.cta-message strong {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.cta-buttons .btn-primary {
+  padding: 24px 60px;
+  font-size: 18px;
+}
+
+.cta-tel {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: var(--white);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.cta-tel-label {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* Footer */
+footer {
+  background: var(--black);
+  padding: 80px 50px 30px;
+  text-align: center;
+  position: relative;
+  border-top: 1px solid rgba(201, 169, 97, 0.15);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.footer-logo-bar {
+  width: 4px;
+  height: 35px;
+  background: var(--gold);
+}
+
+.footer-logo-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.25em;
+  color: var(--white);
+}
+
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: var(--gray-light);
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gray-dark);
+  padding-top: 30px;
+  border-top: 1px solid rgba(201, 169, 97, 0.1);
+}
+
+/* アニメーション */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s, transform 1s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.fade-in-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+
+/* レスポンシブ */
+@media (max-width: 968px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { max-width: 380px; margin: 0 auto; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 15px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  nav ul { gap: 16px; }
+  nav ul a { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-cta { padding: 8px 14px !important; }
+  .logo-main { font-size: 22px; letter-spacing: 0.2em; }
+  section { padding: 80px 20px; }
+  .hero { padding: 100px 20px 40px; }
+  .hero-stats { gap: 30px; }
+  .access-row { grid-template-columns: 1fr; gap: 5px; }
+  .trainer-credentials { grid-template-columns: 1fr; }
+  .cta-buttons .btn-primary, .cta-buttons .btn-secondary { padding: 16px 30px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-bar"></div>
+    <div class="logo-text">
+      <div class="logo-main">A P E X</div>
+      <div class="logo-sub">PERSONAL TRAINING</div>
+    </div>
+  </a>
+  <ul>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#features">FEATURE</a></li>
+    <li><a href="#programs">PROGRAM</a></li>
+    <li><a href="#trainer">TRAINER</a></li>
+    <li><a href="#access">ACCESS</a></li>
+    <li><a href="#cta" class="nav-cta">FREE TRIAL</a></li>
+  </ul>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg-text">APEX</div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="line"></span>
+        <span class="hero-tag-text">PERSONAL TRAINING STUDIO</span>
+      </div>
+      <h1 class="hero-title">
+        REACH<br>
+        YOUR<br>
+        <span class="accent">APEX</span>
+      </h1>
+      <p class="hero-subtitle">
+        本気の自分に、<strong>会いに行こう</strong>。
+      </p>
+      <p class="hero-description">
+        APEXは、結果にコミットする完全予約制のパーソナルジム。<br>
+        一人ひとりの目標に合わせた完全オーダーメイドのプログラムで、<br>
+        あなたの「最高到達点」をサポートします。
+      </p>
+      <div class="hero-cta-group">
+        <a href="#cta" class="btn-primary"><span>無料体験を予約 ＞</span></a>
+        <a href="#programs" class="btn-secondary">プログラムを見る</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">98<small>%</small></div>
+          <div class="hero-stat-label">Goal Achievement</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1,200<small>+</small></div>
+          <div class="hero-stat-label">Members Trained</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">15<small>yrs</small></div>
+          <div class="hero-stat-label">Experience</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-frame">
+        <div class="hero-visual-content">
+          <div class="hero-visual-mark">A</div>
+          <div class="hero-visual-text">APEX</div>
+          <div class="hero-visual-divider"></div>
+          <div class="hero-visual-jp">頂点へ、共に。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="about fade-in">
+  <div class="about-content">
+    <div class="section-tag">
+      <span class="line"></span>
+      <span class="section-tag-text">OUR MISSION</span>
+      <span class="line"></span>
+    </div>
+    <h2 class="about-headline">
+      THE ONLY LIMIT IS<br>
+      <span class="accent">THE ONE YOU SET.</span>
+    </h2>
+    <p class="about-text">
+      限界は、自分が決めるもの。<br>
+      APEXは、あなたが設定した「不可能」を「可能」に変える場所です。<br><br>
+      ただトレーニングをするだけじゃない。栄養指導、メンタルサポート、ライフスタイル全体を変える、<br>
+      本気のあなたに本気で向き合う、それがAPEXのすべて。
+    </p>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="features fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">WHY APEX</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">3 REASONS<br>TO <span class="accent">CHOOSE</span> US</h2>
+  <p class="section-subtitle">
+    なぜAPEXが選ばれるのか。<br>
+    3つの理由をお伝えします。
+  </p>
+
+  <div class="features-grid fade-in-stagger">
+
+    <div class="feature-card">
+      <div class="feature-num">FEATURE / 01</div>
+      <h3 class="feature-title-en">CUSTOM<br>PROGRAM</h3>
+      <p class="feature-title-jp">完全オーダーメイド</p>
+      <p class="feature-desc">
+        体組成測定・カウンセリングをもとに、あなただけのプログラムを構築。同じメニューは2人といません。本気で結果を求める方のための、完全個別対応です。
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-num">FEATURE / 02</div>
+      <h3 class="feature-title-en">TOP TIER<br>TRAINER</h3>
+      <p class="feature-title-jp">トップトレーナー直接指導</p>
+      <p class="feature-desc">
+        全米最高峰の資格保有・指導歴15年以上のトレーナーが、最初から最後まで責任を持って担当。あなたの「最高到達点」まで導きます。
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-num">FEATURE / 03</div>
+      <h3 class="feature-title-en">PRIVATE<br>SPACE</h3>
+      <p class="feature-title-jp">完全プライベート空間</p>
+      <p class="feature-desc">
+        他のメンバーと顔を合わせない完全個室。集中して自分と向き合える環境で、結果に直結するトレーニングが可能です。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Programs -->
+<section id="programs" class="programs fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">OUR PROGRAMS</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">TRAINING<br><span class="accent">PROGRAM</span></h2>
+  <p class="section-subtitle">
+    あなたの目標に合わせて、<br>
+    最適なプログラムをお選びください。
+  </p>
+
+  <div class="programs-grid fade-in-stagger">
+
+    <div class="program-card">
+      <span class="program-tag">FOR BEGINNER</span>
+      <h3 class="program-name">BASIC</h3>
+      <p class="program-name-jp">ベーシックコース</p>
+      <p class="program-desc">
+        まずは2ヶ月で身体を変える、最初の一歩。週2回の集中トレーニングで、確実な変化を実感。
+      </p>
+      <ul class="program-features">
+        <li>週2回 / 60分のセッション</li>
+        <li>体組成測定 (毎月)</li>
+        <li>食事アドバイス</li>
+        <li>2ヶ月集中プログラム</li>
+      </ul>
+      <div class="program-price-row">
+        <div class="program-price">¥198,000<small>(税込)</small></div>
+        <div class="program-duration">2 MONTHS</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <span class="program-tag">MOST POPULAR</span>
+      <h3 class="program-name">PRO</h3>
+      <p class="program-name-jp">プロコース</p>
+      <p class="program-desc">
+        本格的なボディメイクを目指す方へ。3ヶ月で確実に結果を出す、最も選ばれるプログラム。
+      </p>
+      <ul class="program-features">
+        <li>週2-3回 / 60分のセッション</li>
+        <li>毎週の食事管理サポート</li>
+        <li>サプリメント相談</li>
+        <li>3ヶ月集中プログラム</li>
+        <li>LINE 24h サポート</li>
+      </ul>
+      <div class="program-price-row">
+        <div class="program-price">¥298,000<small>(税込)</small></div>
+        <div class="program-duration">3 MONTHS</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <span class="program-tag">FOR PROFESSIONAL</span>
+      <h3 class="program-name">ELITE</h3>
+      <p class="program-name-jp">エリートコース</p>
+      <p class="program-desc">
+        コンテストや本格的な競技を目指す方へ。プロレベルの指導とサポートを提供。
+      </p>
+      <ul class="program-features">
+        <li>週3-4回 / 90分のセッション</li>
+        <li>大会向け栄養指導</li>
+        <li>姿勢分析・撮影サポート</li>
+        <li>4ヶ月集中プログラム</li>
+        <li>専属サポート体制</li>
+      </ul>
+      <div class="program-price-row">
+        <div class="program-price">¥498,000<small>(税込)</small></div>
+        <div class="program-duration">4 MONTHS</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <span class="program-tag">FOR MAINTENANCE</span>
+      <h3 class="program-name">KEEP</h3>
+      <p class="program-name-jp">メンテナンスコース</p>
+      <p class="program-desc">
+        コース卒業後の方や、現状維持を目指す方へ。月数回の通いで体型をキープ。
+      </p>
+      <ul class="program-features">
+        <li>月4回 / 60分のセッション</li>
+        <li>体型維持サポート</li>
+        <li>定期体組成測定</li>
+        <li>1ヶ月単位で継続</li>
+      </ul>
+      <div class="program-price-row">
+        <div class="program-price">¥48,000<small>/月(税込)</small></div>
+        <div class="program-duration">MONTHLY</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Trainer -->
+<section id="trainer" class="trainer fade-in">
+  <div class="trainer-grid">
+    <div class="trainer-visual">
+      <div class="trainer-avatar">
+        <div class="trainer-avatar-mark">T</div>
+        <div class="trainer-avatar-name">TAKUMI</div>
+      </div>
+    </div>
+    <div class="trainer-content">
+      <div class="section-tag">
+        <span class="line"></span>
+        <span class="section-tag-text">YOUR TRAINER</span>
+      </div>
+      <p class="trainer-role">CHIEF TRAINER</p>
+      <h2 class="trainer-name-en">TAKUMI SATO</h2>
+      <p class="trainer-name-jp">佐藤 匠</p>
+      <p class="trainer-bio">
+        全米No.1の資格「NSCA-CSCS」を取得後、ボディビル選手として国内大会優勝。<br>
+        指導歴15年で1,200名以上のクライアントを指導。芸能人・アスリートのパーソナルトレーナーも務める。<br><br>
+        「結果は、本気の積み重ねでしか出ない」がモットー。あなたの本気と全力で向き合います。
+      </p>
+      <ul class="trainer-credentials">
+        <li>NSCA-CSCS 認定資格</li>
+        <li>NESTA-PFT 認定資格</li>
+        <li>ボディビル国内大会優勝</li>
+        <li>指導歴 15年以上</li>
+        <li>担当クライアント 1,200+</li>
+        <li>栄養学 修士号</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="results fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">OUR NUMBERS</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">RESULTS THAT<br><span class="accent">SPEAK</span></h2>
+  <p class="section-subtitle">
+    数字が語る、APEXの実績。
+  </p>
+
+  <div class="results-grid fade-in-stagger">
+    <div class="result-card">
+      <div class="result-icon">98</div>
+      <div class="result-num">98<small>%</small></div>
+      <div class="result-label">Goal Achievement</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">★</div>
+      <div class="result-num">4.9<small>/5</small></div>
+      <div class="result-label">Customer Rating</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">+</div>
+      <div class="result-num">1,200<small>+</small></div>
+      <div class="result-label">Members Trained</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">%</div>
+      <div class="result-num">95<small>%</small></div>
+      <div class="result-label">Continuation Rate</div>
+    </div>
+  </div>
+</section>
+
+<!-- Voices -->
+<section class="voices fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">SUCCESS STORIES</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">MEMBER<br><span class="accent">VOICES</span></h2>
+  <p class="section-subtitle">
+    実際にAPEXで結果を出したメンバーの声。
+  </p>
+
+  <div class="voices-grid fade-in-stagger">
+
+    <div class="voice-card">
+      <span class="voice-quote">"</span>
+      <div class="voice-result">
+        <div class="voice-result-item">
+          <div class="voice-result-num">-12<small>kg</small></div>
+          <div class="voice-result-label">Weight</div>
+        </div>
+        <div class="voice-result-item">
+          <div class="voice-result-num">3<small>mo</small></div>
+          <div class="voice-result-label">Period</div>
+        </div>
+      </div>
+      <h3 class="voice-headline">3ヶ月で人生が<br>変わった</h3>
+      <p class="voice-text">
+        ダイエット失敗を繰り返してた自分が、APEXで本物の変化を実感。トレーナーの的確な指導と、毎日のサポートで諦めずに続けられました。
+      </p>
+      <div class="voice-author">
+        <strong>K.M</strong>
+        Age 35 / Office Worker
+      </div>
+    </div>
+
+    <div class="voice-card">
+      <span class="voice-quote">"</span>
+      <div class="voice-result">
+        <div class="voice-result-item">
+          <div class="voice-result-num">+8<small>kg</small></div>
+          <div class="voice-result-label">Muscle</div>
+        </div>
+        <div class="voice-result-item">
+          <div class="voice-result-num">4<small>mo</small></div>
+          <div class="voice-result-label">Period</div>
+        </div>
+      </div>
+      <h3 class="voice-headline">理想の身体を<br>手に入れた</h3>
+      <p class="voice-text">
+        ガリガリの体型がコンプレックスでした。エリートコースで本格的に取り組み、4ヶ月で人生初の「がっしり体型」に。自信を持てるようになりました。
+      </p>
+      <div class="voice-author">
+        <strong>R.T</strong>
+        Age 28 / Engineer
+      </div>
+    </div>
+
+    <div class="voice-card">
+      <span class="voice-quote">"</span>
+      <div class="voice-result">
+        <div class="voice-result-item">
+          <div class="voice-result-num">-8<small>kg</small></div>
+          <div class="voice-result-label">Weight</div>
+        </div>
+        <div class="voice-result-item">
+          <div class="voice-result-num">2<small>mo</small></div>
+          <div class="voice-result-label">Period</div>
+        </div>
+      </div>
+      <h3 class="voice-headline">結婚式に向けて<br>最高の体に</h3>
+      <p class="voice-text">
+        2ヶ月後に控えた結婚式に向けて、ベーシックコースで集中トレーニング。短期間でしっかり変化があり、当日も自信を持って臨めました。
+      </p>
+      <div class="voice-author">
+        <strong>A.S</strong>
+        Age 31 / Designer
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Access -->
+<section id="access" class="access fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">OUR LOCATION</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">ACCESS</h2>
+  <p class="section-subtitle">
+    最寄り駅から徒歩圏内。<br>
+    通いやすい立地で、続けられる環境を。
+  </p>
+
+  <div class="access-grid">
+    <div class="access-info">
+      <div class="access-row">
+        <span class="access-label">ADDRESS</span>
+        <span class="access-value">大阪府大阪市〇〇区〇〇 1-2-3<br>APEXビル B1F</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">HOURS</span>
+        <span class="access-value">07:00 - 23:00<br>(完全予約制)</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">CLOSED</span>
+        <span class="access-value">年中無休</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">TEL</span>
+        <span class="access-value">06-XXXX-XXXX</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">STATION</span>
+        <span class="access-value">〇〇駅 徒歩2分</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">PARKING</span>
+        <span class="access-value">提携駐車場あり</span>
+      </div>
+    </div>
+    <div class="access-map">
+      <div class="map-pin">
+        <div class="map-pin-mark">A</div>
+        <div class="map-pin-text">APEX MAP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">START YOUR JOURNEY</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="cta-headline">
+    READY TO<br>
+    <span class="accent">CHANGE</span>?
+  </h2>
+  <p class="cta-message">
+    まずは <strong>無料体験</strong> から。<br>
+    あなたの本気を、私たちが受け止めます。
+  </p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-primary"><span>FREE TRIAL ＞</span></a>
+    <a href="#" class="btn-secondary">資料請求</a>
+  </div>
+  <p class="cta-tel">06-XXXX-XXXX</p>
+  <p class="cta-tel-label">RECEPTION &nbsp; 7:00 - 23:00</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-bar"></div>
+    <div class="footer-logo-main">A P E X</div>
+    <div class="footer-logo-bar"></div>
+  </div>
+  <p class="footer-tagline">reach your apex.</p>
+  <nav class="footer-nav">
+    <a href="#about">ABOUT</a>
+    <a href="#features">FEATURE</a>
+    <a href="#programs">PROGRAM</a>
+    <a href="#trainer">TRAINER</a>
+    <a href="#access">ACCESS</a>
+    <a href="#cta">CONTACT</a>
+  </nav>
+  <p class="footer-copy">© 2026 APEX Personal Training Studio. All rights reserved.</p>
+</footer>
+
+<script>
+// ナビゲーションのスクロール効果
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// スクロール時のフェードイン
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

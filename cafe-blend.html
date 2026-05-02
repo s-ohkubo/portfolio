@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe BLEND | 大阪のスペシャルティコーヒー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700&family=Shippori+Mincho:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf6f0;
+  --cream-soft: #f5ede0;
+  --cream-mid: #ede0c9;
+  --beige: #d4a574;
+  --beige-light: #e8c79a;
+  --brown-light: #b08862;
+  --brown: #8b6f47;
+  --brown-dark: #5d4a30;
+  --terracotta: #c97862;
+  --mustard: #d4a017;
+  --text-dark: #3d2f1f;
+  --text-mid: #6b5848;
+  --text-light: #9b8870;
+  --white: #fffefb;
+  --shadow: rgba(93, 74, 48, 0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Shippori Mincho', serif;
+  color: var(--text-dark);
+  background: var(--cream);
+  line-height: 1.9;
+  overflow-x: hidden;
+}
+
+/* ナビゲーション */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 22px 50px;
+  background: rgba(250, 246, 240, 0.92);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(139, 111, 71, 0.15);
+  transition: padding 0.3s;
+}
+
+nav.scrolled { padding: 14px 50px; }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--brown);
+  font-style: italic;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--brown-dark);
+  line-height: 1;
+  font-style: italic;
+}
+
+.logo-sub {
+  font-family: 'Caveat', cursive;
+  font-size: 13px;
+  color: var(--terracotta);
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 38px;
+  align-items: center;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav ul a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--terracotta);
+  transition: width 0.3s;
+}
+
+nav ul a:hover { color: var(--terracotta); }
+nav ul a:hover::after { width: 100%; }
+
+/* ヒーローセクション */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 50px 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at top right, var(--cream-soft) 0%, var(--cream) 60%),
+    radial-gradient(ellipse at bottom left, var(--cream-mid) 0%, transparent 50%);
+  overflow: hidden;
+}
+
+.hero-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.hero-tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--terracotta);
+  margin-bottom: 25px;
+  letter-spacing: 0.05em;
+}
+
+.hero-title-en {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(64px, 9vw, 120px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--brown-dark);
+  line-height: 0.95;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.hero-title-en .accent {
+  color: var(--terracotta);
+}
+
+.hero-title-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--brown);
+  margin-bottom: 35px;
+}
+
+.hero-divider-line {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.hero-divider-line .line {
+  height: 1px;
+  width: 60px;
+  background: var(--brown);
+}
+
+.hero-divider-line .icon {
+  color: var(--brown);
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.hero-description {
+  font-size: 15px;
+  line-height: 2.3;
+  color: var(--text-mid);
+  margin-bottom: 45px;
+  letter-spacing: 0.05em;
+  max-width: 480px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: var(--brown);
+  color: var(--white);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  border-radius: 50px;
+  transition: all 0.3s;
+  box-shadow: 0 8px 25px rgba(139, 111, 71, 0.3);
+  font-style: italic;
+}
+
+.btn-primary:hover {
+  background: var(--brown-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(139, 111, 71, 0.4);
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brown);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  font-style: italic;
+  transition: color 0.3s;
+}
+
+.btn-link:hover { color: var(--terracotta); }
+
+/* ヒーロービジュアル */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  animation: fadeInRight 1.4s 0.3s both ease-out;
+}
+
+.hero-visual-main {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, var(--beige-light) 0%, var(--beige) 50%, var(--brown-light) 100%);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px var(--shadow);
+}
+
+.hero-visual-main::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  border: 1px solid rgba(255, 254, 251, 0.6);
+}
+
+.hero-visual-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-visual-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: 130px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 25px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-visual-text {
+  font-family: 'Caveat', cursive;
+  font-size: 36px;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.hero-visual-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  opacity: 0.95;
+}
+
+.hero-tag-circle {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  bottom: -30px;
+  right: -30px;
+  transform: rotate(15deg);
+  box-shadow: 0 10px 30px rgba(201, 120, 98, 0.4);
+}
+
+.hero-tag-circle-text {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 1.2;
+  text-align: center;
+  font-weight: 700;
+}
+
+.hero-tag-circle-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* セクション共通 */
+section {
+  padding: 130px 50px;
+  position: relative;
+}
+
+.section-tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--terracotta);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 700;
+  text-align: center;
+  color: var(--brown-dark);
+  margin-bottom: 25px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 70px;
+}
+
+.section-divider .line {
+  height: 1px;
+  width: 50px;
+  background: var(--brown);
+}
+
+.section-divider .icon {
+  color: var(--terracotta);
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* About */
+.about {
+  background: var(--white);
+  position: relative;
+}
+
+.about-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--cream-soft) 0%, var(--beige-light) 50%, var(--terracotta) 100%);
+  box-shadow: 0 25px 50px var(--shadow);
+}
+
+.about-visual::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  border: 1px solid rgba(255, 254, 251, 0.5);
+}
+
+.about-visual-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--white);
+}
+
+.about-visual-quote {
+  font-family: 'Caveat', cursive;
+  font-size: 50px;
+  line-height: 1.3;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-visual-author {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  margin-top: 25px;
+  font-style: italic;
+}
+
+.about-content {
+  text-align: left;
+}
+
+.about-content .section-tagline,
+.about-content .section-title {
+  text-align: left;
+}
+
+.about-content .section-divider {
+  justify-content: flex-start;
+}
+
+.about-text {
+  font-size: 15px;
+  line-height: 2.4;
+  color: var(--text-dark);
+  letter-spacing: 0.04em;
+}
+
+.about-text p {
+  margin-bottom: 25px;
+}
+
+.about-quote {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  color: var(--terracotta);
+  margin: 30px 0;
+  padding-left: 25px;
+  border-left: 3px solid var(--terracotta);
+  line-height: 1.5;
+}
+
+.about-signature {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  color: var(--brown);
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 50px; }
+  .about-content .section-tagline,
+  .about-content .section-title { text-align: center; }
+  .about-content .section-divider { justify-content: center; }
+}
+
+/* Menu */
+.menu {
+  background: var(--cream-soft);
+  position: relative;
+}
+
+.menu-categories {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.menu-cat {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--text-mid);
+  font-style: italic;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.menu-cat.active {
+  color: var(--terracotta);
+}
+
+.menu-cat.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--terracotta);
+}
+
+.menu-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.menu-card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.4s;
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+.menu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(93, 74, 48, 0.2);
+}
+
+.menu-image {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--beige-light) 0%, var(--brown-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-image::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(255, 254, 251, 0.4);
+}
+
+.menu-image-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  color: var(--white);
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+}
+
+.menu-card.coffee .menu-image {
+  background: linear-gradient(135deg, var(--brown-light) 0%, var(--brown-dark) 100%);
+}
+
+.menu-card.food .menu-image {
+  background: linear-gradient(135deg, var(--beige-light) 0%, var(--terracotta) 100%);
+}
+
+.menu-card.dessert .menu-image {
+  background: linear-gradient(135deg, var(--cream-mid) 0%, var(--beige) 100%);
+}
+
+.menu-info {
+  padding: 30px 25px;
+}
+
+.menu-name-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+
+.menu-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--brown-dark);
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+.menu-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--terracotta);
+  white-space: nowrap;
+}
+
+.menu-name-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  color: var(--text-light);
+  letter-spacing: 0.15em;
+  margin-bottom: 15px;
+}
+
+.menu-desc {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--text-mid);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 968px) {
+  .menu-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .menu-grid { grid-template-columns: 1fr; }
+}
+
+/* Story（ストーリーセクション） */
+.story {
+  background: var(--white);
+}
+
+.story-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+.story-card {
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+}
+
+.story-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 90px;
+  font-weight: 700;
+  color: var(--cream-mid);
+  line-height: 1;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.story-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--terracotta);
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.story-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--brown-dark);
+  margin-bottom: 8px;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+.story-title-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  color: var(--brown);
+  letter-spacing: 0.2em;
+  margin-bottom: 25px;
+}
+
+.story-desc {
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--text-mid);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .story-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* Today */
+.today {
+  background:
+    linear-gradient(135deg, var(--brown) 0%, var(--brown-dark) 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.today::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 50%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.2) 0%, transparent 60%);
+}
+
+.today::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 50%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(201, 120, 98, 0.2) 0%, transparent 60%);
+}
+
+.today-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.today .section-tagline { color: var(--beige-light); }
+.today .section-title { color: var(--white); }
+
+.today-headline {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.4;
+  margin-bottom: 25px;
+  color: var(--beige-light);
+}
+
+.today-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 30px;
+  letter-spacing: 0.05em;
+}
+
+.today-desc {
+  font-size: 16px;
+  line-height: 2.2;
+  letter-spacing: 0.05em;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.today-quote {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--beige-light);
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 254, 251, 0.2);
+  border-bottom: 1px solid rgba(255, 254, 251, 0.2);
+  letter-spacing: 0.05em;
+}
+
+/* Visit */
+.visit {
+  background: var(--cream-soft);
+}
+
+.visit-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.visit-info {
+  display: grid;
+  gap: 0;
+}
+
+.visit-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(139, 111, 71, 0.2);
+  transition: padding 0.3s;
+}
+
+.visit-row:hover { padding-left: 12px; }
+
+.visit-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--terracotta);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.visit-value {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 2;
+  letter-spacing: 0.03em;
+}
+
+.visit-map {
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--beige) 0%, var(--brown) 100%);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visit-map::before {
+  content: '';
+  position: absolute;
+  inset: 25px;
+  border: 1px dashed rgba(255, 254, 251, 0.5);
+}
+
+.map-pin {
+  text-align: center;
+  color: var(--white);
+}
+
+.map-pin-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.map-pin-text {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .visit-grid { grid-template-columns: 1fr; }
+}
+
+/* SNS */
+.sns {
+  background: var(--white);
+  text-align: center;
+}
+
+.sns-message {
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 2;
+  margin-bottom: 50px;
+  letter-spacing: 0.05em;
+}
+
+.sns-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.sns-card {
+  background: var(--cream-soft);
+  padding: 40px 50px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--brown-dark);
+  transition: all 0.4s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  min-width: 200px;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.sns-card:hover {
+  background: var(--terracotta);
+  color: var(--white);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(201, 120, 98, 0.3);
+}
+
+.sns-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.sns-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  font-style: italic;
+}
+
+.sns-handle {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+/* Footer */
+footer {
+  background: var(--brown-dark);
+  color: var(--cream-soft);
+  padding: 80px 50px 30px;
+  text-align: center;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: var(--terracotta);
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.footer-tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--beige-light);
+  margin-bottom: 40px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: var(--cream-soft);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  font-style: italic;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.footer-nav a:hover { opacity: 1; }
+
+.footer-quote {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--beige-light);
+  margin: 30px 0;
+  font-style: italic;
+}
+
+.footer-copy {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  opacity: 0.6;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 254, 251, 0.15);
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s, transform 1s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.fade-in-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+.fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+.fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* レスポンシブ */
+@media (max-width: 968px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { max-width: 400px; margin: 0 auto; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 15px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  nav ul { gap: 16px; }
+  nav ul a { font-size: 11px; letter-spacing: 0.15em; }
+  .logo-name { font-size: 18px; }
+  .logo-icon { font-size: 22px; }
+  section { padding: 80px 20px; }
+  .hero { padding: 100px 20px 40px; }
+  .visit-row { grid-template-columns: 1fr; gap: 5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-icon">B</div>
+    <div class="logo-text">
+      <div class="logo-name">B L E N D</div>
+      <div class="logo-sub">coffee & atelier</div>
+    </div>
+  </a>
+  <ul>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#menu">MENU</a></li>
+    <li><a href="#story">STORY</a></li>
+    <li><a href="#today">TODAY</a></li>
+    <li><a href="#visit">VISIT</a></li>
+  </ul>
+</nav>
+
+<!-- ヒーローセクション -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <p class="hero-tagline">a moment for yourself.</p>
+      <h1 class="hero-title-en">
+        Cafe<br>
+        <span class="accent">Blend.</span>
+      </h1>
+      <p class="hero-title-jp">珈琲と、本と、街の小さなアトリエ。</p>
+      <div class="hero-divider-line">
+        <span class="line"></span>
+        <span class="icon">★</span>
+        <span class="line"></span>
+      </div>
+      <p class="hero-description">
+        ふらりと立ち寄る、街の角の小さなカフェ。<br>
+        スペシャルティコーヒーと焼きたてのパン、<br>
+        本と人が混ざり合う、あなたの「お気に入り」になれたら。
+      </p>
+      <div class="hero-cta-group">
+        <a href="#visit" class="btn-primary">お店に行く ＞</a>
+        <a href="#menu" class="btn-link">→ メニューを見る</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-main">
+        <div class="hero-visual-content">
+          <div class="hero-visual-icon">B</div>
+          <div class="hero-visual-text">Coffee Time</div>
+          <div class="hero-visual-jp">B L E N D</div>
+        </div>
+      </div>
+      <div class="hero-tag-circle">
+        <div class="hero-tag-circle-text">Specialty<br>Coffee</div>
+        <div class="hero-tag-circle-sub">SINCE 2018</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="about fade-in">
+  <div class="about-grid">
+
+    <div class="about-visual">
+      <div class="about-visual-content">
+        <p class="about-visual-quote">"a cup of coffee,<br>a moment of peace."</p>
+        <p class="about-visual-author">B L E N D</p>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <p class="section-tagline">about us</p>
+      <h2 class="section-title">our story</h2>
+      <div class="section-divider">
+        <span class="line"></span>
+        <span class="icon">★</span>
+        <span class="line"></span>
+      </div>
+      <div class="about-text">
+        <p>
+          Cafe BLENDは、2018年に大阪の小さな路地に生まれました。
+        </p>
+        <p class="about-quote">
+          "コーヒーが、誰かの<br>「ちょっと特別な日常」になりますように。"
+        </p>
+        <p>
+          世界中から仕入れたスペシャルティコーヒー豆を、店主自らが焙煎。<br>
+          焼きたてのパン、季節のスイーツ、本棚に並ぶ古今東西の本たち。
+        </p>
+        <p>
+          ここは、コーヒーを飲む場所であり、本を読む場所であり、<br>
+          人と出会う場所であり、自分と向き合う場所。
+        </p>
+        <p class="about-signature">— with love, master</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="menu fade-in">
+  <p class="section-tagline">our menu</p>
+  <h2 class="section-title">menu</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">★</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="menu-categories">
+    <span class="menu-cat active">— COFFEE —</span>
+    <span class="menu-cat">— FOOD —</span>
+    <span class="menu-cat">— DESSERT —</span>
+  </div>
+
+  <div class="menu-grid fade-in-stagger">
+
+    <div class="menu-card coffee">
+      <div class="menu-image">
+        <div class="menu-image-icon">C</div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name-wrap">
+          <h3 class="menu-name">House Blend</h3>
+          <span class="menu-price">¥520</span>
+        </div>
+        <p class="menu-name-jp">ハウスブレンド</p>
+        <p class="menu-desc">3種類の豆を絶妙にブレンドした、当店自慢の定番コーヒー。</p>
+      </div>
+    </div>
+
+    <div class="menu-card coffee">
+      <div class="menu-image">
+        <div class="menu-image-icon">L</div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name-wrap">
+          <h3 class="menu-name">Cafe Latte</h3>
+          <span class="menu-price">¥580</span>
+        </div>
+        <p class="menu-name-jp">カフェラテ</p>
+        <p class="menu-desc">エスプレッソとミルクの黄金比。ラテアートも自慢の一杯。</p>
+      </div>
+    </div>
+
+    <div class="menu-card coffee">
+      <div class="menu-image">
+        <div class="menu-image-icon">D</div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name-wrap">
+          <h3 class="menu-name">Drip Coffee</h3>
+          <span class="menu-price">¥620</span>
+        </div>
+        <p class="menu-name-jp">ドリップコーヒー</p>
+        <p class="menu-desc">産地ごとの個性を楽しむシングルオリジン。月替わりでご提供。</p>
+      </div>
+    </div>
+
+    <div class="menu-card food">
+      <div class="menu-image">
+        <div class="menu-image-icon">P</div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name-wrap">
+          <h3 class="menu-name">Pain Plate</h3>
+          <span class="menu-price">¥1,280</span>
+        </div>
+        <p class="menu-name-jp">パンプレート</p>
+        <p class="menu-desc">店内焼き上げのパン3種と、自家製ジャム・バターの盛り合わせ。</p>
+      </div>
+    </div>
+
+    <div class="menu-card food">
+      <div class="menu-image">
+        <div class="menu-image-icon">S</div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name-wrap">
+          <h3 class="menu-name">Soup Set</h3>
+          <span class="menu-price">¥980</span>
+        </div>
+        <p class="menu-name-jp">スープセット</p>
+        <p class="menu-desc">季節野菜たっぷりのスープと、自家製パンのセット。</p>
+      </div>
+    </div>
+
+    <div class="menu-card dessert">
+      <div class="menu-image">
+        <div class="menu-image-icon">T</div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name-wrap">
+          <h3 class="menu-name">Tarte du Jour</h3>
+          <span class="menu-price">¥680</span>
+        </div>
+        <p class="menu-name-jp">本日のタルト</p>
+        <p class="menu-desc">季節のフルーツを使った、店主こだわりの自家製タルト。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Story -->
+<section id="story" class="story fade-in">
+  <p class="section-tagline">our commitment</p>
+  <h2 class="section-title">three stories</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">★</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="story-grid fade-in-stagger">
+
+    <div class="story-card">
+      <div class="story-num">01</div>
+      <span class="story-icon">★</span>
+      <h3 class="story-title">Specialty Beans</h3>
+      <p class="story-title-jp">こだわりの豆</p>
+      <p class="story-desc">
+        世界中から厳選したスペシャルティ豆のみを使用。生産者の顔が見える、確かな品質。
+      </p>
+    </div>
+
+    <div class="story-card">
+      <div class="story-num">02</div>
+      <span class="story-icon">★</span>
+      <h3 class="story-title">Hand Roasted</h3>
+      <p class="story-title-jp">自家焙煎</p>
+      <p class="story-desc">
+        店内に焙煎機を置き、毎日その日に必要な分だけ焙煎。フレッシュな状態でお届け。
+      </p>
+    </div>
+
+    <div class="story-card">
+      <div class="story-num">03</div>
+      <span class="story-icon">★</span>
+      <h3 class="story-title">Slow Time</h3>
+      <p class="story-title-jp">ゆっくり過ごす時間</p>
+      <p class="story-desc">
+        Wi-Fiも電源もありますが、本を読むのが似合うお店。日常から少し離れる、特別な時間を。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Today -->
+<section id="today" class="today fade-in">
+  <div class="today-content">
+    <p class="section-tagline">today's coffee</p>
+    <h2 class="section-title">today's pick</h2>
+    <div class="section-divider">
+      <span class="line" style="background: var(--beige-light)"></span>
+      <span class="icon" style="color: var(--beige-light)">★</span>
+      <span class="line" style="background: var(--beige-light)"></span>
+    </div>
+    <p class="today-headline">— from Ethiopia —</p>
+    <h3 class="today-name">Yirgacheffe Konga</h3>
+    <p class="today-desc">
+      エチオピア・イルガチェフェ地方のコンガ農園のコーヒー。<br>
+      フルーティーで華やかな香り、ジャスミンのような余韻が特徴的。<br><br>
+      豆の個性を最大限引き出すため、浅煎りで仕上げました。<br>
+      アイスでもホットでも、ぜひお試しください。
+    </p>
+    <p class="today-quote">
+      "Today's pick is here for you."
+    </p>
+  </div>
+</section>
+
+<!-- Visit -->
+<section id="visit" class="visit fade-in">
+  <p class="section-tagline">visit us</p>
+  <h2 class="section-title">visit</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">★</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="visit-grid">
+    <div class="visit-info">
+      <div class="visit-row">
+        <span class="visit-label">ADDRESS</span>
+        <span class="visit-value">大阪府大阪市〇〇区〇〇 1-2-3<br>BLEND ビル 1F</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-label">HOURS</span>
+        <span class="visit-value">8:00 - 20:00<br>(L.O. 19:30)</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-label">CLOSED</span>
+        <span class="visit-value">月曜日 (祝日の場合 火曜)</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-label">TEL</span>
+        <span class="visit-value">06-XXXX-XXXX</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-label">STATION</span>
+        <span class="visit-value">〇〇駅 徒歩5分</span>
+      </div>
+      <div class="visit-row">
+        <span class="visit-label">WIFI</span>
+        <span class="visit-value">あり (店内利用OK)</span>
+      </div>
+    </div>
+    <div class="visit-map">
+      <div class="map-pin">
+        <div class="map-pin-icon">B</div>
+        <div class="map-pin-text">find us!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SNS -->
+<section class="sns fade-in">
+  <p class="section-tagline">stay connected</p>
+  <h2 class="section-title">follow us</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">★</span>
+    <span class="line"></span>
+  </div>
+
+  <p class="sns-message">
+    日々のメニュー情報、新作スイーツ、イベント情報を発信中。<br>
+    ぜひフォローして、BLENDの日常を覗いてみてください。
+  </p>
+
+  <div class="sns-grid">
+    <a href="#" class="sns-card">
+      <span class="sns-icon">I</span>
+      <span class="sns-name">Instagram</span>
+      <span class="sns-handle">@cafe_blend</span>
+    </a>
+    <a href="#" class="sns-card">
+      <span class="sns-icon">X</span>
+      <span class="sns-name">X (Twitter)</span>
+      <span class="sns-handle">@cafe_blend</span>
+    </a>
+    <a href="#" class="sns-card">
+      <span class="sns-icon">N</span>
+      <span class="sns-name">Newsletter</span>
+      <span class="sns-handle">subscribe →</span>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Cafe Blend</div>
+  <p class="footer-tagline">a moment for yourself.</p>
+  <nav class="footer-nav">
+    <a href="#about">ABOUT</a>
+    <a href="#menu">MENU</a>
+    <a href="#story">STORY</a>
+    <a href="#today">TODAY</a>
+    <a href="#visit">VISIT</a>
+  </nav>
+  <p class="footer-quote">"life begins after coffee."</p>
+  <p class="footer-copy">© 2026 Cafe Blend. All rights reserved.</p>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
