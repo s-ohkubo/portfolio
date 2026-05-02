@@ -770,11 +770,49 @@ section {
   transition: all 0.4s;
   box-shadow: 0 12px 35px var(--shadow);
   position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .work-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 25px 50px var(--shadow-deep);
+}
+
+/* ホバー時のオーバーレイ */
+.work-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 41, 66, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.work-card:hover .work-overlay {
+  opacity: 1;
+}
+
+.work-overlay-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  letter-spacing: 0.4em;
+  color: var(--gold-light);
+  font-style: italic;
+  font-weight: 600;
+  padding: 14px 32px;
+  border: 1px solid var(--gold-light);
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+
+.work-card:hover .work-overlay-text {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-color: var(--gold);
 }
 
 .work-image {
@@ -1594,11 +1632,14 @@ footer {
 
   <div class="works-grid fade-in-stagger">
 
-    <div class="work-card work-staygold">
+    <a href="staygold.html" class="work-card work-staygold" target="_blank" rel="noopener">
       <div class="work-image">
         <div class="work-image-content">
           <div class="work-image-mark">S</div>
           <div class="work-image-text">staygold</div>
+        </div>
+        <div class="work-overlay">
+          <span class="work-overlay-text">VIEW SITE →</span>
         </div>
       </div>
       <div class="work-info">
@@ -1617,13 +1658,16 @@ footer {
           <span class="work-tag">Elegant</span>
         </div>
       </div>
-    </div>
+    </a>
 
-    <div class="work-card work-yui">
+    <a href="yui-seitai.html" class="work-card work-yui" target="_blank" rel="noopener">
       <div class="work-image">
         <div class="work-image-content">
           <div class="work-image-mark">結</div>
           <div class="work-image-text">YUI</div>
+        </div>
+        <div class="work-overlay">
+          <span class="work-overlay-text">VIEW SITE →</span>
         </div>
       </div>
       <div class="work-info">
@@ -1642,13 +1686,16 @@ footer {
           <span class="work-tag">Clean</span>
         </div>
       </div>
-    </div>
+    </a>
 
-    <div class="work-card work-apex">
+    <a href="apex.html" class="work-card work-apex" target="_blank" rel="noopener">
       <div class="work-image">
         <div class="work-image-content">
           <div class="work-image-mark">A</div>
           <div class="work-image-text">APEX</div>
+        </div>
+        <div class="work-overlay">
+          <span class="work-overlay-text">VIEW SITE →</span>
         </div>
       </div>
       <div class="work-info">
@@ -1667,13 +1714,16 @@ footer {
           <span class="work-tag">Bold</span>
         </div>
       </div>
-    </div>
+    </a>
 
-    <div class="work-card work-blend">
+    <a href="cafe-blend.html" class="work-card work-blend" target="_blank" rel="noopener">
       <div class="work-image">
         <div class="work-image-content">
           <div class="work-image-mark">B</div>
           <div class="work-image-text">BLEND</div>
+        </div>
+        <div class="work-overlay">
+          <span class="work-overlay-text">VIEW SITE →</span>
         </div>
       </div>
       <div class="work-info">
@@ -1692,7 +1742,7 @@ footer {
           <span class="work-tag">Friendly</span>
         </div>
       </div>
-    </div>
+    </a>
 
   </div>
 </section>
