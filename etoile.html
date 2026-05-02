@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon Étoile | 大阪のプライベート美容室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600&family=Marcellus&family=Shippori+Mincho:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-white: #fefcfb;
+  --bg-mist: #f5edea;
+  --bg-smoke: #ebe0dc;
+  --bg-light: #ffffff;
+  --smoky-pink: #d4a5a0;
+  --smoky-pink-deep: #b88780;
+  --rose-mauve: #a87870;
+  --plum: #6b4954;
+  --plum-deep: #4a3340;
+  --sage: #b8b09f;
+  --champagne: #e8d8c5;
+  --text-dark: #3d2f30;
+  --text-mid: #6b5556;
+  --text-light: #9b8788;
+  --gold-soft: #c4a574;
+  --shadow: rgba(107, 73, 84, 0.12);
+  --shadow-deep: rgba(74, 51, 64, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Shippori Mincho', serif;
+  color: var(--text-dark);
+  background: var(--bg-white);
+  line-height: 1.9;
+  overflow-x: hidden;
+}
+
+/* ナビゲーション */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 22px 50px;
+  background: rgba(254, 252, 251, 0.92);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(184, 135, 128, 0.15);
+  transition: padding 0.3s;
+}
+
+nav.scrolled { padding: 14px 50px; }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--smoky-pink) 0%, var(--plum) 100%);
+  color: var(--bg-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--plum-deep);
+  line-height: 1;
+}
+
+.logo-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9px;
+  letter-spacing: 0.45em;
+  color: var(--smoky-pink-deep);
+  margin-top: 5px;
+  font-style: italic;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 38px;
+  align-items: center;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav ul a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--plum);
+  transition: width 0.3s;
+}
+
+nav ul a:hover { color: var(--plum); }
+nav ul a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--plum);
+  color: var(--bg-light) !important;
+  padding: 10px 26px;
+  border-radius: 30px;
+  letter-spacing: 0.25em !important;
+  transition: all 0.3s;
+}
+
+.nav-cta:hover {
+  background: var(--plum-deep);
+  transform: translateY(-2px);
+}
+
+.nav-cta::after { display: none; }
+
+/* ヒーロー */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 50px 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at top right, var(--bg-mist) 0%, var(--bg-white) 60%),
+    radial-gradient(ellipse at bottom left, var(--bg-smoke) 0%, transparent 50%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: 'Étoile';
+  position: absolute;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(180px, 25vw, 360px);
+  font-weight: 400;
+  color: rgba(212, 165, 160, 0.08);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  bottom: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+.hero-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  animation: fadeInLeft 1.2s ease-out;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+  padding: 8px 24px;
+  background: rgba(212, 165, 160, 0.15);
+  border-radius: 30px;
+}
+
+.hero-tag-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--smoky-pink-deep);
+  border-radius: 50%;
+}
+
+.hero-tag-text {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  color: var(--rose-mauve);
+  font-weight: 500;
+}
+
+.hero-title-en {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(54px, 8vw, 110px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--plum-deep);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.hero-title-en .accent {
+  color: var(--smoky-pink-deep);
+  font-style: italic;
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.5vw, 28px);
+  letter-spacing: 0.4em;
+  color: var(--rose-mauve);
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 35px;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 35px;
+}
+
+.hero-divider .line {
+  width: 60px;
+  height: 1px;
+  background: var(--smoky-pink);
+}
+
+.hero-divider-icon {
+  color: var(--smoky-pink-deep);
+  font-family: 'Marcellus', serif;
+  font-size: 18px;
+}
+
+.hero-description {
+  font-size: 15px;
+  line-height: 2.4;
+  color: var(--text-mid);
+  margin-bottom: 45px;
+  letter-spacing: 0.06em;
+  max-width: 480px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 48px;
+  background: var(--plum);
+  color: var(--bg-light);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s;
+  box-shadow: 0 8px 25px var(--shadow-deep);
+}
+
+.btn-primary:hover {
+  background: var(--plum-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px var(--shadow-deep);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 42px;
+  background: transparent;
+  color: var(--plum);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  border: 1px solid var(--plum);
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: var(--plum);
+  color: var(--bg-light);
+}
+
+/* ヒーロービジュアル */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  animation: fadeInRight 1.4s 0.3s both ease-out;
+}
+
+.hero-visual-frame {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--smoky-pink) 0%, var(--rose-mauve) 50%, var(--plum) 100%);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px var(--shadow-deep);
+}
+
+.hero-visual-frame::before {
+  content: '';
+  position: absolute;
+  inset: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.hero-visual-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  padding: 30px;
+  color: var(--bg-light);
+}
+
+.hero-visual-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 130px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 25px;
+  letter-spacing: 0.05em;
+}
+
+.hero-visual-name {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  letter-spacing: 0.5em;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.hero-visual-divider {
+  width: 50px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  margin: 18px auto;
+}
+
+.hero-visual-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  opacity: 0.9;
+}
+
+.hero-visual-tag {
+  position: absolute;
+  bottom: -25px;
+  right: -25px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  color: var(--plum-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(8deg);
+  box-shadow: 0 10px 30px var(--shadow-deep);
+  border: 2px solid var(--smoky-pink);
+}
+
+.hero-visual-tag-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+  color: var(--plum);
+}
+
+.hero-visual-tag-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  margin-top: 4px;
+  color: var(--smoky-pink-deep);
+}
+
+@media (max-width: 968px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { max-width: 380px; margin: 0 auto; }
+}
+
+/* セクション共通 */
+section {
+  padding: 130px 50px;
+  position: relative;
+}
+
+.section-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.section-tag .line {
+  width: 40px;
+  height: 1px;
+  background: var(--smoky-pink);
+}
+
+.section-tag-text {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: var(--smoky-pink-deep);
+  font-weight: 500;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--plum-deep);
+  margin-bottom: 22px;
+}
+
+.section-title .accent {
+  color: var(--smoky-pink-deep);
+  font-style: italic;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 70px;
+}
+
+.section-divider .line {
+  height: 1px;
+  width: 50px;
+  background: var(--smoky-pink);
+}
+
+.section-divider .icon {
+  color: var(--smoky-pink-deep);
+  font-family: 'Marcellus', serif;
+  font-size: 18px;
+}
+
+/* Concept */
+.concept {
+  background: var(--bg-mist);
+  position: relative;
+}
+
+.concept-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.concept-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--plum);
+  line-height: 1.5;
+  margin-bottom: 40px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.concept-quote .accent {
+  color: var(--smoky-pink-deep);
+}
+
+.concept-text {
+  font-size: 15px;
+  line-height: 2.4;
+  color: var(--text-dark);
+  letter-spacing: 0.06em;
+}
+
+.concept-text p {
+  margin-bottom: 25px;
+}
+
+.concept-highlight {
+  background: linear-gradient(transparent 60%, rgba(212, 165, 160, 0.4) 60%);
+  padding: 0 4px;
+  font-weight: 600;
+  color: var(--plum-deep);
+}
+
+/* Menu */
+.menu {
+  background: var(--bg-white);
+}
+
+.menu-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.menu-section {
+  margin-bottom: 70px;
+}
+
+.menu-section:last-child {
+  margin-bottom: 0;
+}
+
+.menu-section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  letter-spacing: 0.4em;
+  color: var(--plum-deep);
+  text-align: center;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.menu-section-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: var(--smoky-pink-deep);
+  text-align: center;
+  letter-spacing: 0.3em;
+  margin-bottom: 35px;
+  font-weight: 500;
+}
+
+.menu-section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 45px;
+}
+
+.menu-section-divider .line {
+  width: 30px;
+  height: 1px;
+  background: var(--smoky-pink);
+}
+
+.menu-section-divider .icon {
+  color: var(--smoky-pink-deep);
+  font-size: 12px;
+}
+
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px 50px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px dashed rgba(184, 135, 128, 0.3);
+  gap: 20px;
+}
+
+.menu-item-left {
+  flex: 1;
+}
+
+.menu-item-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--plum-deep);
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+}
+
+.menu-item-desc {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+}
+
+.menu-item-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--smoky-pink-deep);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.menu-item-price small {
+  font-size: 11px;
+  color: var(--text-light);
+  font-family: 'Shippori Mincho', serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .menu-list { grid-template-columns: 1fr; }
+}
+
+/* Reasons */
+.reasons {
+  background: var(--bg-mist);
+  position: relative;
+}
+
+.reasons-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.reason-card {
+  background: var(--bg-white);
+  padding: 50px 25px;
+  text-align: center;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.4s;
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+.reason-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px var(--shadow-deep);
+}
+
+.reason-num {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  color: var(--smoky-pink-deep);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.reason-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-mist) 0%, var(--smoky-pink) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.reason-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--smoky-pink);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.reason-icon-mark {
+  font-family: 'Marcellus', serif;
+  font-size: 28px;
+  color: var(--bg-light);
+}
+
+.reason-title {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--plum-deep);
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.reason-title-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: var(--rose-mauve);
+  letter-spacing: 0.2em;
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.reason-desc {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--text-mid);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 968px) {
+  .reasons-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .reasons-grid { grid-template-columns: 1fr; }
+}
+
+/* Stylist */
+.stylist {
+  background: var(--bg-white);
+}
+
+.stylist-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.stylist-visual {
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--plum) 0%, var(--rose-mauve) 100%);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px var(--shadow-deep);
+}
+
+.stylist-visual::before {
+  content: '';
+  position: absolute;
+  inset: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.stylist-visual-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--bg-light);
+}
+
+.stylist-visual-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 100px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 18px;
+  letter-spacing: 0.05em;
+}
+
+.stylist-visual-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  font-weight: 500;
+}
+
+.stylist-content .section-tag {
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.stylist-content .section-title {
+  text-align: left;
+}
+
+.stylist-content .section-divider {
+  justify-content: flex-start;
+}
+
+.stylist-role {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  color: var(--smoky-pink-deep);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.stylist-name-en {
+  font-family: 'Cinzel', serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--plum-deep);
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+
+.stylist-name-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  color: var(--rose-mauve);
+  letter-spacing: 0.3em;
+  margin-bottom: 35px;
+}
+
+.stylist-bio {
+  font-size: 14px;
+  line-height: 2.3;
+  color: var(--text-mid);
+  margin-bottom: 35px;
+  letter-spacing: 0.04em;
+}
+
+.stylist-credentials {
+  list-style: none;
+  padding: 25px 0 5px;
+  border-top: 1px solid rgba(184, 135, 128, 0.2);
+}
+
+.stylist-credentials li {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  color: var(--text-dark);
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+
+.stylist-credentials li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: var(--smoky-pink-deep);
+  font-size: 9px;
+}
+
+@media (max-width: 768px) {
+  .stylist-grid { grid-template-columns: 1fr; gap: 50px; }
+  .stylist-content .section-tag,
+  .stylist-content .section-divider { justify-content: center; }
+  .stylist-content .section-title { text-align: center; }
+}
+
+/* Gallery */
+.gallery {
+  background: var(--bg-mist);
+}
+
+.gallery-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.gallery-item {
+  aspect-ratio: 3/4;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-1 { background: linear-gradient(135deg, var(--bg-smoke) 0%, var(--smoky-pink) 100%); }
+.gallery-2 { background: linear-gradient(135deg, var(--smoky-pink) 0%, var(--rose-mauve) 100%); }
+.gallery-3 { background: linear-gradient(135deg, var(--champagne) 0%, var(--smoky-pink) 100%); }
+.gallery-4 { background: linear-gradient(135deg, var(--rose-mauve) 0%, var(--plum) 100%); }
+.gallery-5 { background: linear-gradient(135deg, var(--plum) 0%, var(--plum-deep) 100%); }
+.gallery-6 { background: linear-gradient(135deg, var(--bg-mist) 0%, var(--bg-smoke) 100%); }
+
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.gallery-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--bg-light);
+}
+
+.gallery-6 .gallery-content { color: var(--plum); }
+
+.gallery-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 60px;
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+
+.gallery-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Info */
+.info {
+  background: var(--bg-white);
+}
+
+.info-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.info-list {
+  display: grid;
+  gap: 0;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(184, 135, 128, 0.2);
+  transition: padding 0.3s;
+}
+
+.info-row:hover { padding-left: 12px; }
+
+.info-label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  color: var(--smoky-pink-deep);
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.info-image {
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--smoky-pink) 0%, var(--plum) 100%);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 25px 50px var(--shadow-deep);
+}
+
+.info-image::before {
+  content: '';
+  position: absolute;
+  inset: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.info-image-content {
+  text-align: center;
+  color: var(--bg-light);
+}
+
+.info-image-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 100px;
+  line-height: 1;
+  margin-bottom: 15px;
+  letter-spacing: 0.05em;
+}
+
+.info-image-text {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 0.5em;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* CTA */
+.cta {
+  background:
+    linear-gradient(135deg, var(--plum) 0%, var(--plum-deep) 100%);
+  text-align: center;
+  color: var(--bg-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: 'Étoile';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(220px, 30vw, 420px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+.cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta .section-tag-text { color: var(--smoky-pink); }
+.cta .section-title { color: var(--bg-light); }
+
+.cta-message {
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2.4;
+  color: var(--bg-light);
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.cta .btn-primary {
+  background: var(--bg-light);
+  color: var(--plum-deep);
+  padding: 22px 55px;
+  font-size: 13px;
+}
+
+.cta .btn-primary:hover {
+  background: var(--bg-mist);
+}
+
+.cta .btn-outline {
+  background: transparent;
+  color: var(--bg-light);
+  border: 1px solid var(--bg-light);
+  padding: 22px 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.cta .btn-outline:hover {
+  background: var(--bg-light);
+  color: var(--plum-deep);
+}
+
+.cta-tel {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.cta-tel-label {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+/* Footer */
+footer {
+  background: var(--text-dark);
+  color: var(--bg-mist);
+  padding: 80px 50px 30px;
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.footer-logo-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--smoky-pink) 0%, var(--rose-mauve) 100%);
+  color: var(--bg-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.footer-logo-name {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  letter-spacing: 0.35em;
+  color: var(--bg-mist);
+}
+
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  color: var(--smoky-pink);
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: var(--bg-mist);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  font-weight: 500;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.footer-nav a:hover { opacity: 1; }
+
+.footer-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--smoky-pink);
+  font-style: italic;
+  margin: 30px 0;
+}
+
+.footer-copy {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  opacity: 0.5;
+  padding-top: 30px;
+  border-top: 1px solid rgba(212, 165, 160, 0.2);
+}
+
+/* アニメーション */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s, transform 1s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.fade-in-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+.fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+.fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  nav { padding: 15px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  nav ul { gap: 14px; }
+  nav ul a { font-size: 10px; letter-spacing: 0.2em; }
+  .nav-cta { padding: 8px 14px !important; }
+  .logo-name { font-size: 13px; }
+  .logo-mark { width: 36px; height: 36px; font-size: 16px; }
+  section { padding: 80px 20px; }
+  .hero { padding: 100px 20px 40px; }
+  .info-row { grid-template-columns: 1fr; gap: 5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-mark">É</div>
+    <div class="logo-text">
+      <div class="logo-name">É T O I L E</div>
+      <div class="logo-sub">SALON</div>
+    </div>
+  </a>
+  <ul>
+    <li><a href="#concept">CONCEPT</a></li>
+    <li><a href="#menu">MENU</a></li>
+    <li><a href="#reasons">REASON</a></li>
+    <li><a href="#stylist">STYLIST</a></li>
+    <li><a href="#info">INFO</a></li>
+    <li><a href="#cta" class="nav-cta">RESERVE</a></li>
+  </ul>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        <span class="hero-tag-text">PRIVATE HAIR SALON</span>
+      </div>
+      <h1 class="hero-title-en">
+        <span class="accent">Étoile.</span><br>
+        Hair Salon
+      </h1>
+      <p class="hero-tagline">あなたの輝きを、もっと。</p>
+      <div class="hero-divider">
+        <span class="line"></span>
+        <span class="hero-divider-icon">✦</span>
+      </div>
+      <p class="hero-description">
+        フランス語で「星」を意味するÉtoile。<br>
+        一人ひとりが持つ個性という「星」を、<br>
+        最高のスタイルで輝かせるプライベート美容室です。
+      </p>
+      <div class="hero-cta-group">
+        <a href="#cta" class="btn-primary">予約する ＞</a>
+        <a href="#menu" class="btn-secondary">メニュー</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-frame">
+        <div class="hero-visual-content">
+          <div class="hero-visual-mark">É</div>
+          <div class="hero-visual-name">É T O I L E</div>
+          <div class="hero-visual-divider"></div>
+          <p class="hero-visual-jp">輝く、あなたへ</p>
+        </div>
+      </div>
+      <div class="hero-visual-tag">
+        <p class="hero-visual-tag-text">Be your<br>own star.</p>
+        <p class="hero-visual-tag-sub">SINCE 2020</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Concept -->
+<section id="concept" class="concept fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">OUR CONCEPT</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">Concept</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">✦</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="concept-content">
+    <p class="concept-quote">
+      "あなたを<span class="accent">輝く星</span>に。<br>
+      個性を、最高のスタイルへ。"
+    </p>
+    <div class="concept-text">
+      <p>
+        Salon Étoile (サロン・エトワール) は、<br>
+        フランス語で「星」を意味します。
+      </p>
+      <p>
+        私たちは、お客様一人ひとりが持つ<span class="concept-highlight">個性という「星」</span>を、<br>
+        最高のヘアスタイルで輝かせる、プライベート美容室です。
+      </p>
+      <p>
+        トレンドだけを追いかけるのではなく、<br>
+        あなたの骨格、髪質、ライフスタイルに合わせた、<br>
+        本当に似合うスタイルをご提案します。
+      </p>
+      <p>
+        完全予約制・1日6名限定。<br>
+        他のお客様を気にせず、ゆったりと過ごせる<span class="concept-highlight">特別な時間</span>を、お届けします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="menu fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">OUR MENU</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">Menu</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">✦</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="menu-section">
+      <h3 class="menu-section-title">C U T &nbsp;&nbsp; & &nbsp;&nbsp; B A S I C</h3>
+      <p class="menu-section-jp">カット・ベーシックメニュー</p>
+      <div class="menu-section-divider">
+        <span class="line"></span>
+        <span class="icon">✦</span>
+        <span class="line"></span>
+      </div>
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Cut</h4>
+            <p class="menu-item-desc">骨格・髪質に合わせたカット</p>
+          </div>
+          <p class="menu-item-price">¥5,500<small>(税込)</small></p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Cut + Shampoo</h4>
+            <p class="menu-item-desc">カット + シャンプー・ブロー</p>
+          </div>
+          <p class="menu-item-price">¥6,800<small>(税込)</small></p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Front Cut</h4>
+            <p class="menu-item-desc">前髪のみのカット</p>
+          </div>
+          <p class="menu-item-price">¥1,500<small>(税込)</small></p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Spa</h4>
+            <p class="menu-item-desc">ヘッドスパ (30分)</p>
+          </div>
+          <p class="menu-item-price">¥3,800<small>(税込)</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h3 class="menu-section-title">C O L O R &nbsp;&nbsp; & &nbsp;&nbsp; P E R M</h3>
+      <p class="menu-section-jp">カラー・パーマメニュー</p>
+      <div class="menu-section-divider">
+        <span class="line"></span>
+        <span class="icon">✦</span>
+        <span class="line"></span>
+      </div>
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Color</h4>
+            <p class="menu-item-desc">カラーリング (ロング+¥1,000)</p>
+          </div>
+          <p class="menu-item-price">¥7,500<small>〜</small></p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Highlight</h4>
+            <p class="menu-item-desc">ハイライト・バレイヤージュ</p>
+          </div>
+          <p class="menu-item-price">¥12,000<small>〜</small></p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Perm</h4>
+            <p class="menu-item-desc">デジタルパーマ</p>
+          </div>
+          <p class="menu-item-price">¥11,000<small>〜</small></p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Straight</h4>
+            <p class="menu-item-desc">縮毛矯正</p>
+          </div>
+          <p class="menu-item-price">¥18,000<small>〜</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h3 class="menu-section-title">T R E A T M E N T &nbsp;&nbsp; & &nbsp;&nbsp; S P A</h3>
+      <p class="menu-section-jp">トリートメント・スパ</p>
+      <div class="menu-section-divider">
+        <span class="line"></span>
+        <span class="icon">✦</span>
+        <span class="line"></span>
+      </div>
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Premium Treatment</h4>
+            <p class="menu-item-desc">プレミアム髪質改善</p>
+          </div>
+          <p class="menu-item-price">¥8,800<small>(税込)</small></p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <h4 class="menu-item-name">Aroma Spa</h4>
+            <p class="menu-item-desc">アロマヘッドスパ (60分)</p>
+          </div>
+          <p class="menu-item-price">¥6,800<small>(税込)</small></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Reasons -->
+<section id="reasons" class="reasons fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">WHY ETOILE</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">4 <span class="accent">Reasons</span></h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">✦</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="reasons-grid fade-in-stagger">
+
+    <div class="reason-card">
+      <p class="reason-num">REASON / 01</p>
+      <div class="reason-icon">
+        <span class="reason-icon-mark">✦</span>
+      </div>
+      <h3 class="reason-title">PRIVATE</h3>
+      <p class="reason-title-jp">完全プライベート</p>
+      <p class="reason-desc">
+        1日6名限定の完全予約制。他のお客様を気にせず過ごせます。
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <p class="reason-num">REASON / 02</p>
+      <div class="reason-icon">
+        <span class="reason-icon-mark">◇</span>
+      </div>
+      <h3 class="reason-title">EXPERT</h3>
+      <p class="reason-title-jp">スタイリスト指名制</p>
+      <p class="reason-desc">
+        担当スタイリストが最初から最後まで対応。安心の継続ケア。
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <p class="reason-num">REASON / 03</p>
+      <div class="reason-icon">
+        <span class="reason-icon-mark">○</span>
+      </div>
+      <h3 class="reason-title">QUALITY</h3>
+      <p class="reason-title-jp">こだわり薬剤</p>
+      <p class="reason-desc">
+        髪に優しいオーガニック・低刺激の薬剤を使用。ダメージを抑えます。
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <p class="reason-num">REASON / 04</p>
+      <div class="reason-icon">
+        <span class="reason-icon-mark">✧</span>
+      </div>
+      <h3 class="reason-title">CARE</h3>
+      <p class="reason-title-jp">アフターケア</p>
+      <p class="reason-desc">
+        ご自宅でのお手入れ方法もご提案。長く美しい髪を保てます。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Stylist -->
+<section id="stylist" class="stylist fade-in">
+  <div class="stylist-grid">
+    <div class="stylist-visual">
+      <div class="stylist-visual-content">
+        <div class="stylist-visual-mark">M</div>
+        <p class="stylist-visual-name">M I S A K I</p>
+      </div>
+    </div>
+    <div class="stylist-content">
+      <div class="section-tag">
+        <span class="line"></span>
+        <span class="section-tag-text">YOUR STYLIST</span>
+      </div>
+      <h2 class="section-title">Stylist</h2>
+      <div class="section-divider">
+        <span class="line"></span>
+        <span class="icon">✦</span>
+        <span class="line"></span>
+      </div>
+      <p class="stylist-role">CHIEF STYLIST</p>
+      <h3 class="stylist-name-en">Misaki Tanaka</h3>
+      <p class="stylist-name-jp">田中 美咲</p>
+      <p class="stylist-bio">
+        都内有名サロンで10年勤務後、2020年に Salon Étoile を開業。<br>
+        雑誌掲載多数、有名人のヘアスタイリングも担当。<br><br>
+        「お客様の魅力を最大限引き出す」がモットー。一人ひとりに合ったスタイル提案で、リピート率90%以上の信頼を獲得しています。
+      </p>
+      <ul class="stylist-credentials">
+        <li>JHCA認定ヘアアーティスト</li>
+        <li>美容師歴 15年</li>
+        <li>雑誌掲載 50回以上</li>
+        <li>カラーリスト・スパニスト資格</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">STYLE GALLERY</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">Gallery</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">✦</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="gallery-grid fade-in-stagger">
+    <div class="gallery-item gallery-1">
+      <div class="gallery-content">
+        <div class="gallery-mark">B</div>
+        <p class="gallery-text">B O B</p>
+      </div>
+    </div>
+    <div class="gallery-item gallery-2">
+      <div class="gallery-content">
+        <div class="gallery-mark">L</div>
+        <p class="gallery-text">L O N G</p>
+      </div>
+    </div>
+    <div class="gallery-item gallery-3">
+      <div class="gallery-content">
+        <div class="gallery-mark">S</div>
+        <p class="gallery-text">S H O R T</p>
+      </div>
+    </div>
+    <div class="gallery-item gallery-4">
+      <div class="gallery-content">
+        <div class="gallery-mark">C</div>
+        <p class="gallery-text">C O L O R</p>
+      </div>
+    </div>
+    <div class="gallery-item gallery-5">
+      <div class="gallery-content">
+        <div class="gallery-mark">P</div>
+        <p class="gallery-text">P E R M</p>
+      </div>
+    </div>
+    <div class="gallery-item gallery-6">
+      <div class="gallery-content">
+        <div class="gallery-mark">A</div>
+        <p class="gallery-text">A R R A N G E</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Info -->
+<section id="info" class="info fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">SALON INFO</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">Information</h2>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">✦</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-list">
+      <div class="info-row">
+        <span class="info-label">NAME</span>
+        <span class="info-value">Salon Étoile<br>(サロン・エトワール)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">ADDRESS</span>
+        <span class="info-value">大阪府大阪市〇〇区〇〇 1-2-3<br>Étoile Building 2F</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">HOURS</span>
+        <span class="info-value">10:00 - 20:00<br>(最終受付 18:30)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">CLOSED</span>
+        <span class="info-value">火曜日</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">TEL</span>
+        <span class="info-value">06-XXXX-XXXX</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">SEATS</span>
+        <span class="info-value">3席 (完全予約制)</span>
+      </div>
+    </div>
+    <div class="info-image">
+      <div class="info-image-content">
+        <div class="info-image-mark">É</div>
+        <p class="info-image-text">É T O I L E</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">RESERVATION</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-title">Reserve</h2>
+  <div class="section-divider">
+    <span class="line" style="background:rgba(255,255,255,0.4)"></span>
+    <span class="icon" style="color:var(--smoky-pink)">✦</span>
+    <span class="line" style="background:rgba(255,255,255,0.4)"></span>
+  </div>
+  <p class="cta-message">
+    "あなたを輝く星に。"<br>
+    あなたの個性を、最高のスタイルへ。<br>
+    まずは、お気軽にご予約ください。
+  </p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-primary">WEB予約 ＞</a>
+    <a href="#" class="btn-outline">LINE予約</a>
+  </div>
+  <p class="cta-tel">06-XXXX-XXXX</p>
+  <p class="cta-tel-label">RECEPTION &nbsp; 10:00 - 20:00</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark">É</div>
+    <div class="footer-logo-name">É T O I L E</div>
+  </div>
+  <p class="footer-tagline">be your own star.</p>
+  <nav class="footer-nav">
+    <a href="#concept">CONCEPT</a>
+    <a href="#menu">MENU</a>
+    <a href="#reasons">REASON</a>
+    <a href="#stylist">STYLIST</a>
+    <a href="#info">INFO</a>
+    <a href="#cta">RESERVE</a>
+  </nav>
+  <p class="footer-quote">"輝く、あなたへ。"</p>
+  <p class="footer-copy">© 2026 Salon Étoile. All rights reserved.</p>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

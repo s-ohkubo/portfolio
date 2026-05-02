@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麺屋 漣 | 大阪のこだわり一杯</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+JP:wght@300;400;500;600;700;900&family=Shippori+Mincho:wght@300;400;500;600;700;800&family=Yuji+Mai&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-black: #0a0808;
+  --bg-deep: #161210;
+  --bg-warm: #1f1815;
+  --paper: #f5ede0;
+  --paper-deep: #e8d9bc;
+  --crimson: #c41e3a;
+  --crimson-deep: #8b0e22;
+  --gold: #d4a017;
+  --gold-bright: #e8b834;
+  --gold-deep: #a88410;
+  --bamboo: #6b6230;
+  --text-light: #f5ede0;
+  --text-cream: #d8c8a8;
+  --text-mid: #a89878;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Shippori Mincho', serif;
+  background: var(--bg-black);
+  color: var(--text-light);
+  line-height: 1.9;
+  overflow-x: hidden;
+}
+
+/* ナビゲーション */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 22px 50px;
+  background: rgba(10, 8, 8, 0.9);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  transition: padding 0.3s, background 0.3s;
+}
+
+nav.scrolled {
+  padding: 14px 50px;
+  background: rgba(10, 8, 8, 0.97);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 50px;
+  height: 50px;
+  background: var(--crimson);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Yuji Mai', serif;
+  font-size: 32px;
+  font-weight: 400;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+.logo-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-top: 5px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 38px;
+  align-items: center;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: var(--text-cream);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 600;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav ul a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+nav ul a:hover { color: var(--gold); }
+nav ul a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--crimson);
+  color: var(--text-light) !important;
+  padding: 10px 24px;
+  border: 1px solid var(--gold);
+  letter-spacing: 0.25em !important;
+  transition: all 0.3s;
+}
+
+.nav-cta:hover {
+  background: var(--crimson-deep);
+  transform: translateY(-2px);
+}
+
+.nav-cta::after { display: none; }
+
+/* ヒーロー */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 50px 80px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at top right, rgba(196, 30, 58, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(212, 160, 23, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-black) 0%, var(--bg-deep) 100%);
+}
+
+.hero::before {
+  content: '麺';
+  position: absolute;
+  font-family: 'Yuji Mai', serif;
+  font-size: clamp(400px, 50vw, 800px);
+  color: rgba(196, 30, 58, 0.06);
+  line-height: 0.8;
+  bottom: -10%;
+  right: -5%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  animation: fadeInLeft 1.2s ease-out;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 35px;
+  padding: 8px 20px;
+  background: var(--crimson);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+}
+
+.hero-tag-text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+.hero-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: clamp(120px, 18vw, 240px);
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 30px rgba(212, 160, 23, 0.3);
+}
+
+.hero-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: var(--text-light);
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.hero-title .accent {
+  color: var(--crimson);
+}
+
+.hero-en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(16px, 1.8vw, 22px);
+  letter-spacing: 0.55em;
+  color: var(--gold);
+  margin-bottom: 35px;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 35px;
+}
+
+.hero-divider .line {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-divider-icon {
+  color: var(--crimson);
+  font-family: 'Yuji Mai', serif;
+  font-size: 22px;
+}
+
+.hero-description {
+  font-size: 15px;
+  line-height: 2.4;
+  color: var(--text-cream);
+  margin-bottom: 45px;
+  letter-spacing: 0.08em;
+  max-width: 500px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 48px;
+  background: var(--crimson);
+  color: var(--text-light);
+  text-decoration: none;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  font-weight: 700;
+  border: 1px solid var(--gold);
+  transition: all 0.3s;
+  box-shadow: 0 8px 25px rgba(196, 30, 58, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--crimson-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(196, 30, 58, 0.5);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 42px;
+  background: transparent;
+  color: var(--gold);
+  text-decoration: none;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  font-weight: 700;
+  border: 1px solid var(--gold);
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: var(--gold);
+  color: var(--bg-black);
+}
+
+/* ヒーロービジュアル */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  animation: fadeInRight 1.4s 0.3s both ease-out;
+}
+
+.hero-visual-frame {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 40% 40%, var(--crimson) 0%, var(--crimson-deep) 50%, var(--bg-black) 100%);
+  border: 3px solid var(--gold);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.hero-visual-frame::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(245, 237, 224, 0.3);
+}
+
+.hero-visual-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  padding: 30px;
+  color: var(--text-light);
+}
+
+.hero-visual-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: 200px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-visual-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  margin-bottom: 12px;
+}
+
+.hero-visual-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  margin: 18px auto;
+}
+
+.hero-visual-en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+}
+
+.hero-visual-tag {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 110px;
+  height: 110px;
+  background: var(--gold);
+  color: var(--bg-black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-10deg);
+  box-shadow: 0 8px 25px rgba(212, 160, 23, 0.4);
+  border: 2px solid var(--crimson);
+}
+
+.hero-visual-tag-text {
+  font-family: 'Yuji Mai', serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.hero-visual-tag-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+@media (max-width: 968px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { max-width: 380px; margin: 0 auto; }
+}
+
+/* セクション共通 */
+section {
+  padding: 130px 50px;
+  position: relative;
+}
+
+.section-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.section-tag .line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-tag-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+}
+
+.section-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: clamp(60px, 8vw, 100px);
+  color: var(--crimson);
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 70px;
+}
+
+.section-divider .line {
+  height: 1px;
+  width: 60px;
+  background: var(--gold);
+}
+
+.section-divider .icon {
+  color: var(--crimson);
+  font-family: 'Yuji Mai', serif;
+  font-size: 22px;
+}
+
+/* About */
+.about {
+  background: var(--bg-deep);
+  position: relative;
+}
+
+.about-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.about-visual {
+  aspect-ratio: 3/4;
+  background:
+    radial-gradient(circle at 30% 30%, var(--crimson-deep) 0%, var(--bg-black) 80%);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  box-shadow: 0 30px 60px var(--shadow);
+}
+
+.about-visual::before {
+  content: '';
+  position: absolute;
+  inset: 25px;
+  border: 1px solid rgba(212, 160, 23, 0.4);
+}
+
+.about-visual-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--text-light);
+}
+
+.about-visual-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: 120px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+}
+
+.about-visual-quote {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: var(--text-cream);
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.about-content {
+  text-align: left;
+}
+
+.about-content .section-tag,
+.about-content .section-divider { justify-content: flex-start; }
+
+.about-content .section-kanji,
+.about-content .section-title { text-align: left; }
+
+.about-text {
+  font-size: 15px;
+  line-height: 2.4;
+  color: var(--text-cream);
+  letter-spacing: 0.06em;
+}
+
+.about-text p {
+  margin-bottom: 22px;
+}
+
+.about-quote {
+  font-family: 'Yuji Mai', serif;
+  font-size: 32px;
+  color: var(--gold);
+  line-height: 1.5;
+  margin: 30px 0;
+  padding-left: 25px;
+  border-left: 3px solid var(--crimson);
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 50px; }
+  .about-content .section-tag,
+  .about-content .section-divider { justify-content: center; }
+  .about-content .section-kanji,
+  .about-content .section-title { text-align: center; }
+}
+
+/* Menu */
+.menu {
+  background: var(--bg-warm);
+  position: relative;
+}
+
+.menu-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.menu-card {
+  background:
+    linear-gradient(180deg, rgba(196, 30, 58, 0.1) 0%, rgba(10, 8, 8, 0.5) 100%);
+  padding: 45px 35px;
+  position: relative;
+  border: 1px solid rgba(212, 160, 23, 0.25);
+  transition: all 0.4s;
+}
+
+.menu-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.menu-card.signature {
+  background:
+    linear-gradient(180deg, rgba(196, 30, 58, 0.25) 0%, rgba(139, 14, 34, 0.4) 100%);
+  border-color: var(--gold);
+}
+
+.menu-card-tag {
+  display: inline-block;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--bg-black);
+  background: var(--gold);
+  padding: 4px 14px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.menu-card-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: 70px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+
+.menu-card-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.2em;
+  margin-bottom: 5px;
+}
+
+.menu-card-en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 25px;
+}
+
+.menu-card-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--crimson);
+  margin: 20px 0;
+}
+
+.menu-card-desc {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--text-cream);
+  margin-bottom: 30px;
+  letter-spacing: 0.04em;
+}
+
+.menu-card-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+.menu-card-price-label {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: var(--text-mid);
+  letter-spacing: 0.25em;
+}
+
+.menu-card-price {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.menu-card-price small {
+  font-size: 13px;
+  color: var(--text-mid);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+@media (max-width: 768px) {
+  .menu-grid { grid-template-columns: 1fr; }
+}
+
+/* Topping */
+.topping {
+  background: var(--bg-deep);
+}
+
+.topping-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 50px;
+}
+
+.topping-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: 1px dashed rgba(212, 160, 23, 0.2);
+  gap: 20px;
+}
+
+.topping-name-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.topping-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: 22px;
+  color: var(--crimson);
+  line-height: 1;
+}
+
+.topping-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  color: var(--text-light);
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+.topping-price {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .topping-list { grid-template-columns: 1fr; }
+}
+
+/* Reasons */
+.reasons {
+  background: var(--bg-warm);
+}
+
+.reasons-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.reason-card {
+  text-align: center;
+  padding: 50px 30px;
+  background: var(--bg-deep);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  transition: all 0.4s;
+  position: relative;
+}
+
+.reason-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-8px);
+}
+
+.reason-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--crimson);
+}
+
+.reason-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 25px;
+}
+
+.reason-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: 80px;
+  color: var(--crimson);
+  line-height: 1;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 15px rgba(196, 30, 58, 0.3);
+}
+
+.reason-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.3em;
+  margin-bottom: 8px;
+}
+
+.reason-title-en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 25px;
+}
+
+.reason-desc {
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--text-cream);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 968px) {
+  .reasons-grid { grid-template-columns: 1fr; gap: 25px; }
+}
+
+/* Voice */
+.voice {
+  background: var(--bg-deep);
+}
+
+.voice-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.voice-card {
+  background: var(--bg-warm);
+  padding: 40px 35px;
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  position: relative;
+}
+
+.voice-quote-mark {
+  font-family: 'Yuji Mai', serif;
+  font-size: 80px;
+  color: var(--crimson);
+  line-height: 1;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  opacity: 0.5;
+}
+
+.voice-rating {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.voice-headline {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 18px;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+}
+
+.voice-text {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--text-cream);
+  margin-bottom: 25px;
+  letter-spacing: 0.04em;
+}
+
+.voice-author {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--text-mid);
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+.voice-author strong {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  color: var(--text-light);
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .voice-grid { grid-template-columns: 1fr; }
+}
+
+/* Info */
+.info {
+  background: var(--bg-warm);
+}
+
+.info-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.info-list {
+  display: grid;
+  gap: 0;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  transition: padding 0.3s;
+}
+
+.info-row:hover { padding-left: 12px; }
+
+.info-label {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.info-value {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.info-image {
+  aspect-ratio: 4/5;
+  background:
+    radial-gradient(circle at 50% 50%, var(--crimson) 0%, var(--bg-black) 80%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--gold);
+  box-shadow: 0 25px 50px var(--shadow);
+}
+
+.info-image::before {
+  content: '';
+  position: absolute;
+  inset: 25px;
+  border: 1px dashed rgba(245, 237, 224, 0.4);
+}
+
+.info-image-content {
+  text-align: center;
+  color: var(--text-light);
+  position: relative;
+  z-index: 1;
+}
+
+.info-image-kanji {
+  font-family: 'Yuji Mai', serif;
+  font-size: 120px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.info-image-text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* CTA */
+.cta {
+  background:
+    linear-gradient(135deg, var(--crimson) 0%, var(--crimson-deep) 100%);
+  text-align: center;
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '麺';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Yuji Mai', serif;
+  font-size: clamp(280px, 35vw, 480px);
+  color: rgba(212, 160, 23, 0.1);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta .section-kanji { color: var(--gold); }
+.cta .section-title { color: var(--text-light); }
+
+.cta-message {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2.4;
+  color: var(--text-light);
+  opacity: 0.95;
+}
+
+.cta-message strong {
+  color: var(--gold);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.cta .btn-primary {
+  background: var(--gold);
+  color: var(--bg-black);
+  padding: 22px 55px;
+  border-color: var(--text-light);
+  font-size: 15px;
+}
+
+.cta .btn-primary:hover {
+  background: var(--gold-bright);
+}
+
+.cta-tel {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.cta-tel-label {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  opacity: 0.85;
+}
+
+/* Footer */
+footer {
+  background: var(--bg-black);
+  color: var(--text-cream);
+  padding: 80px 50px 30px;
+  text-align: center;
+  border-top: 2px solid var(--gold);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.footer-logo-mark {
+  width: 50px;
+  height: 50px;
+  background: var(--crimson);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Yuji Mai', serif;
+  font-size: 32px;
+  border: 2px solid var(--gold);
+}
+
+.footer-logo-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--text-light);
+}
+
+.footer-tagline {
+  font-family: 'Yuji Mai', serif;
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 40px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: var(--text-cream);
+  text-decoration: none;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.footer-nav a:hover { opacity: 1; }
+
+.footer-quote {
+  font-family: 'Yuji Mai', serif;
+  font-size: 24px;
+  color: var(--gold);
+  margin: 30px 0;
+}
+
+.footer-copy {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  opacity: 0.5;
+  padding-top: 30px;
+  border-top: 1px solid rgba(212, 160, 23, 0.15);
+}
+
+/* アニメーション */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s, transform 1s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.fade-in-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+.fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+.fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  nav { padding: 15px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  nav ul { gap: 14px; }
+  nav ul a { font-size: 11px; letter-spacing: 0.2em; }
+  .nav-cta { padding: 8px 14px !important; }
+  .logo-name { font-size: 16px; }
+  .logo-mark { width: 40px; height: 40px; font-size: 24px; }
+  section { padding: 80px 20px; }
+  .hero { padding: 100px 20px 40px; }
+  .info-row { grid-template-columns: 1fr; gap: 5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-mark">漣</div>
+    <div class="logo-text">
+      <div class="logo-name">麺屋 漣</div>
+      <div class="logo-sub">MEN-YA REN</div>
+    </div>
+  </a>
+  <ul>
+    <li><a href="#about">こだわり</a></li>
+    <li><a href="#menu">品書き</a></li>
+    <li><a href="#reasons">特徴</a></li>
+    <li><a href="#voice">お客様の声</a></li>
+    <li><a href="#info">店舗情報</a></li>
+    <li><a href="#cta" class="nav-cta">予約</a></li>
+  </ul>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="hero-tag-text">本格醤油ラーメン専門店</span>
+      </div>
+      <h1 class="hero-kanji">漣</h1>
+      <p class="hero-title">
+        一杯に、<span class="accent">魂を込めて。</span>
+      </p>
+      <p class="hero-en">M E N - Y A &nbsp;&nbsp; R E N</p>
+      <div class="hero-divider">
+        <span class="line"></span>
+        <span class="hero-divider-icon">麺</span>
+      </div>
+      <p class="hero-description">
+        鶏ガラ・豚骨を14時間炊き込んだ濃厚スープ。<br>
+        毎朝打ちたての自家製麺。<br>
+        一杯一杯に、職人の魂を込めて。
+      </p>
+      <div class="hero-cta-group">
+        <a href="#cta" class="btn-primary">予約・お問い合わせ ＞</a>
+        <a href="#menu" class="btn-secondary">品書きを見る</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-frame">
+        <div class="hero-visual-content">
+          <div class="hero-visual-kanji">漣</div>
+          <div class="hero-visual-name">麺 屋 漣</div>
+          <div class="hero-visual-divider"></div>
+          <div class="hero-visual-en">SINCE 2015</div>
+        </div>
+      </div>
+      <div class="hero-visual-tag">
+        <div class="hero-visual-tag-text">魂の<br>一杯</div>
+        <div class="hero-visual-tag-sub">SOUL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="about fade-in">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-visual-content">
+        <div class="about-visual-kanji">魂</div>
+        <p class="about-visual-quote">
+          一杯に、<br>魂を込めて。
+        </p>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-tag">
+        <span class="line"></span>
+        <span class="section-tag-text">OUR STORY</span>
+      </div>
+      <h2 class="section-kanji">物語</h2>
+      <p class="section-title">こだわり</p>
+      <div class="section-divider">
+        <span class="line"></span>
+        <span class="icon">麺</span>
+        <span class="line"></span>
+      </div>
+      <div class="about-text">
+        <p>
+          麺屋 漣 (めんや・れん) は、2015年、大阪の路地裏に開店した小さなラーメン店。
+        </p>
+        <p>
+          店主は東京の有名店で10年修業の後、独立。<br>
+          「家族にも食べさせたい一杯」を目指して、毎日丁寧に作り続けています。
+        </p>
+        <p class="about-quote">
+          "料理は、心。<br>一杯のラーメンに、<br>すべてを込める。"
+        </p>
+        <p>
+          鶏ガラと豚骨を14時間。煮干しと昆布で旨味を重ねた、<br>
+          深く優しい醤油スープ。<br><br>
+          毎朝打ちたての自家製麺、低温調理のチャーシュー。<br>
+          一杯一杯、ご来店いただくお客様への感謝を込めて。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="menu fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">OUR MENU</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-kanji">品書</h2>
+  <p class="section-title">メニュー</p>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">麺</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="menu-grid fade-in-stagger">
+
+    <div class="menu-card signature">
+      <span class="menu-card-tag">SIGNATURE / 看板</span>
+      <div class="menu-card-kanji">漣</div>
+      <h3 class="menu-card-name">特製 漣ラーメン</h3>
+      <p class="menu-card-en">SPECIAL REN RAMEN</p>
+      <div class="menu-card-divider"></div>
+      <p class="menu-card-desc">
+        鶏ガラ・豚骨を14時間炊いた濃厚スープに、煮干し・昆布の旨味を重ねた看板メニュー。低温調理のチャーシュー2枚、煮玉子、メンマ、ねぎ。
+      </p>
+      <div class="menu-card-price-row">
+        <span class="menu-card-price-label">SIGNATURE</span>
+        <span class="menu-card-price">¥1,200<small>(税込)</small></span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-tag">CLASSIC / 定番</span>
+      <div class="menu-card-kanji">醤</div>
+      <h3 class="menu-card-name">醤油ラーメン</h3>
+      <p class="menu-card-en">SHOYU RAMEN</p>
+      <div class="menu-card-divider"></div>
+      <p class="menu-card-desc">
+        当店の基本となる一杯。素材の旨味を活かした、シンプルだけど奥深い醤油の味わい。チャーシュー1枚、メンマ、ねぎ。
+      </p>
+      <div class="menu-card-price-row">
+        <span class="menu-card-price-label">CLASSIC</span>
+        <span class="menu-card-price">¥850<small>(税込)</small></span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-tag">RICH / 濃厚</span>
+      <div class="menu-card-kanji">濃</div>
+      <h3 class="menu-card-name">濃厚煮干しラーメン</h3>
+      <p class="menu-card-en">NIBOSHI RAMEN</p>
+      <div class="menu-card-divider"></div>
+      <p class="menu-card-desc">
+        煮干しを贅沢に使用した、深い味わいの一杯。ガツンとくる旨味と、後味のすっきりさが特徴。煮干しファン必食。
+      </p>
+      <div class="menu-card-price-row">
+        <span class="menu-card-price-label">RICH</span>
+        <span class="menu-card-price">¥980<small>(税込)</small></span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-tag">SPICY / 辛味</span>
+      <div class="menu-card-kanji">辛</div>
+      <h3 class="menu-card-name">辛味噌ラーメン</h3>
+      <p class="menu-card-en">SPICY MISO RAMEN</p>
+      <div class="menu-card-divider"></div>
+      <p class="menu-card-desc">
+        自家製辛味噌を使った、ピリリと刺激的な一杯。野菜たっぷり、もやしとひき肉が食欲をそそる。辛さ調整可。
+      </p>
+      <div class="menu-card-price-row">
+        <span class="menu-card-price-label">SPICY</span>
+        <span class="menu-card-price">¥1,000<small>(税込)</small></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Topping -->
+<section class="topping fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">EXTRA TOPPING</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-kanji">追加</h2>
+  <p class="section-title">トッピング</p>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">麺</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="topping-list">
+    <div class="topping-item">
+      <div class="topping-name-wrap">
+        <span class="topping-kanji">玉</span>
+        <span class="topping-name">煮玉子</span>
+      </div>
+      <span class="topping-price">¥150</span>
+    </div>
+    <div class="topping-item">
+      <div class="topping-name-wrap">
+        <span class="topping-kanji">肉</span>
+        <span class="topping-name">チャーシュー2枚</span>
+      </div>
+      <span class="topping-price">¥350</span>
+    </div>
+    <div class="topping-item">
+      <div class="topping-name-wrap">
+        <span class="topping-kanji">海</span>
+        <span class="topping-name">海苔3枚</span>
+      </div>
+      <span class="topping-price">¥100</span>
+    </div>
+    <div class="topping-item">
+      <div class="topping-name-wrap">
+        <span class="topping-kanji">麺</span>
+        <span class="topping-name">替玉</span>
+      </div>
+      <span class="topping-price">¥150</span>
+    </div>
+    <div class="topping-item">
+      <div class="topping-name-wrap">
+        <span class="topping-kanji">飯</span>
+        <span class="topping-name">ライス (小)</span>
+      </div>
+      <span class="topping-price">¥100</span>
+    </div>
+    <div class="topping-item">
+      <div class="topping-name-wrap">
+        <span class="topping-kanji">餃</span>
+        <span class="topping-name">餃子5個</span>
+      </div>
+      <span class="topping-price">¥400</span>
+    </div>
+  </div>
+</section>
+
+<!-- Reasons -->
+<section id="reasons" class="reasons fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">3 REASONS</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-kanji">特徴</h2>
+  <p class="section-title">3つのこだわり</p>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">麺</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="reasons-grid fade-in-stagger">
+
+    <div class="reason-card">
+      <p class="reason-num">REASON / 01</p>
+      <div class="reason-kanji">出</div>
+      <h3 class="reason-title">出汁</h3>
+      <p class="reason-title-en">SOUP</p>
+      <p class="reason-desc">
+        鶏ガラ・豚骨を14時間炊き込み、煮干し・昆布で旨味を重ねた、深く優しいスープ。
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <p class="reason-num">REASON / 02</p>
+      <div class="reason-kanji">麺</div>
+      <h3 class="reason-title">自家製麺</h3>
+      <p class="reason-title-en">NOODLES</p>
+      <p class="reason-desc">
+        毎朝打ちたての自家製麺。スープと最高に絡む、こだわりの中太縮れ麺を使用しています。
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <p class="reason-num">REASON / 03</p>
+      <div class="reason-kanji">具</div>
+      <h3 class="reason-title">具材</h3>
+      <p class="reason-title-en">TOPPINGS</p>
+      <p class="reason-desc">
+        低温調理のチャーシュー、半熟煮玉子、自家製メンマ。一つひとつ丁寧に手作りしています。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Voice -->
+<section id="voice" class="voice fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">CUSTOMER VOICE</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-kanji">声</h2>
+  <p class="section-title">お客様の声</p>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">麺</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="voice-grid fade-in-stagger">
+
+    <div class="voice-card">
+      <span class="voice-quote-mark">"</span>
+      <p class="voice-rating">★ ★ ★ ★ ★</p>
+      <h3 class="voice-headline">毎週通っています!</h3>
+      <p class="voice-text">
+        近所に住んでて、毎週通ってます。漣ラーメンの濃厚スープが本当に最高。チャーシューも肉厚で、これで1,200円は安い。家族にも教えたい味。
+      </p>
+      <div class="voice-author">
+        <strong>K.S 様</strong>
+        40代 / 男性 / 会社員
+      </div>
+    </div>
+
+    <div class="voice-card">
+      <span class="voice-quote-mark">"</span>
+      <p class="voice-rating">★ ★ ★ ★ ★</p>
+      <h3 class="voice-headline">煮干しが絶品!</h3>
+      <p class="voice-text">
+        煮干しラーメン目当てで初訪問。期待以上でした。煮干しの旨味がガツンとくるのに、後味すっきり。これは通いたくなる味。次は辛味噌を!
+      </p>
+      <div class="voice-author">
+        <strong>T.M 様</strong>
+        30代 / 男性 / 自営業
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Info -->
+<section id="info" class="info fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">SHOP INFO</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-kanji">店舗</h2>
+  <p class="section-title">店舗情報</p>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="icon">麺</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-list">
+      <div class="info-row">
+        <span class="info-label">店名</span>
+        <span class="info-value">麺屋 漣 (めんや・れん)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">住所</span>
+        <span class="info-value">大阪府大阪市〇〇区〇〇 1-2-3<br>漣ビル 1F</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">営業時間</span>
+        <span class="info-value">11:00 - 15:00<br>17:30 - 22:00 (LO 21:30)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">定休日</span>
+        <span class="info-value">月曜日</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">電話</span>
+        <span class="info-value">06-XXXX-XXXX</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">席数</span>
+        <span class="info-value">カウンター8席 / テーブル4席</span>
+      </div>
+    </div>
+    <div class="info-image">
+      <div class="info-image-content">
+        <div class="info-image-kanji">漣</div>
+        <p class="info-image-text">M A P</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta fade-in">
+  <div class="section-tag">
+    <span class="line"></span>
+    <span class="section-tag-text">VISIT US</span>
+    <span class="line"></span>
+  </div>
+  <h2 class="section-kanji">来店</h2>
+  <p class="section-title">ご来店をお待ちしております</p>
+  <div class="section-divider">
+    <span class="line" style="background:rgba(255,255,255,0.4)"></span>
+    <span class="icon" style="color:var(--gold)">麺</span>
+    <span class="line" style="background:rgba(255,255,255,0.4)"></span>
+  </div>
+  <p class="cta-message">
+    一杯に、魂を込めて。<br>
+    <strong>「うまい」</strong>の一言を、いただくために。<br>
+    皆様のご来店、心よりお待ちしております。
+  </p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-primary">電話予約 ＞</a>
+    <a href="#" class="btn-secondary" style="background:transparent;color:var(--text-light);border-color:var(--text-light);">アクセス</a>
+  </div>
+  <p class="cta-tel">06-XXXX-XXXX</p>
+  <p class="cta-tel-label">RECEPTION &nbsp; 11:00 - 22:00</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark">漣</div>
+    <div class="footer-logo-name">麺屋 漣</div>
+  </div>
+  <p class="footer-tagline">魂を、込めて。</p>
+  <nav class="footer-nav">
+    <a href="#about">こだわり</a>
+    <a href="#menu">品書き</a>
+    <a href="#reasons">特徴</a>
+    <a href="#voice">お客様の声</a>
+    <a href="#info">店舗情報</a>
+    <a href="#cta">予約</a>
+  </nav>
+  <p class="footer-quote">"一杯に、魂を込めて。"</p>
+  <p class="footer-copy">© 2026 Men-Ya Ren. All rights reserved.</p>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
