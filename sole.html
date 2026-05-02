@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trattoria Sole | 大阪・北新地の本格イタリアン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Shippori+Mincho:wght@400;500;600;700&family=Italianno&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #1a0f0a;
+  --bg-deep: #2a1810;
+  --bg-warm: #3a2418;
+  --terracotta: #c8553d;
+  --terracotta-deep: #a43d28;
+  --gold: #d4a854;
+  --gold-light: #e8c578;
+  --cream: #f4e8d0;
+  --ivory: #faf3e3;
+  --wine: #722f37;
+  --olive: #7a8450;
+  --text-light: #e8d8b8;
+  --text-mute: #a89478;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Shippori Mincho', 'Cormorant Garamond', serif;
+  color: var(--text-light);
+  background: var(--bg-dark);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(26, 15, 10, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 168, 84, 0.2);
+  padding: 1.2rem 0;
+}
+
+.nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Italianno', cursive;
+  font-size: 2.5rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.logo span {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  color: var(--terracotta);
+  margin-top: -2px;
+  font-weight: 500;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  transition: color 0.3s;
+  font-family: 'Cormorant Garamond', serif;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+nav a:hover { color: var(--gold-light); }
+nav a:hover::after { width: 100%; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(200, 85, 61, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(212, 168, 84, 0.15) 0%, transparent 60%),
+    linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-deep) 50%, var(--bg-warm) 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0, transparent 2px, rgba(212, 168, 84, 0.02) 2px, rgba(212, 168, 84, 0.02) 4px);
+}
+
+.hero-ornament {
+  position: absolute;
+  font-family: 'Italianno', cursive;
+  color: var(--gold);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-ornament.tl { top: 12%; left: 6%; font-size: 12rem; transform: rotate(-12deg); }
+.hero-ornament.br { bottom: 12%; right: 6%; font-size: 10rem; transform: rotate(8deg); }
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  padding: 0 2rem;
+  max-width: 900px;
+  animation: fadeUp 1.5s ease-out;
+}
+
+.hero-mark {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  position: relative;
+  padding: 0 3rem;
+}
+
+.hero-mark::before, .hero-mark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--gold);
+}
+.hero-mark::before { left: 0; }
+.hero-mark::after { right: 0; }
+
+.hero h1 {
+  font-family: 'Italianno', cursive;
+  font-size: clamp(4rem, 10vw, 8rem);
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.hero h1 + .ja {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: var(--terracotta);
+  letter-spacing: 0.5em;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 3.5rem;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 1.1rem 3.5rem;
+  background: var(--terracotta);
+  color: var(--ivory);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  border: 1px solid var(--terracotta);
+  transition: all 0.4s;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s;
+  z-index: -1;
+}
+
+.btn-primary:hover {
+  border-color: var(--gold);
+  color: var(--bg-dark);
+}
+
+.btn-primary:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== セクション共通 ===== */
+section {
+  padding: 8rem 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-mark {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-mark .it {
+  display: block;
+  font-family: 'Italianno', cursive;
+  font-size: 4rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.section-mark .jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.85rem;
+  color: var(--terracotta);
+  font-weight: 500;
+  letter-spacing: 0.6em;
+  display: inline-block;
+}
+
+/* ===== STORY (ABOUT) ===== */
+.story {
+  background: var(--bg-deep);
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.story-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.story-image {
+  aspect-ratio: 4/5;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(212, 168, 84, 0.4), transparent 60%),
+    linear-gradient(135deg, var(--terracotta) 0%, var(--wine) 100%);
+  position: relative;
+  border: 1px solid var(--gold);
+}
+
+.story-image::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(244, 232, 208, 0.3);
+}
+
+.story-image-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Italianno', cursive;
+  font-size: 4rem;
+  color: var(--ivory);
+  white-space: nowrap;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.story-text h3 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.9rem;
+  color: var(--gold-light);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.story-text h3 em {
+  font-family: 'Italianno', cursive;
+  font-style: normal;
+  font-size: 3rem;
+  color: var(--terracotta);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.story-text p {
+  color: var(--text-light);
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 2;
+}
+
+.story-text .signature {
+  margin-top: 2.5rem;
+  font-family: 'Italianno', cursive;
+  font-size: 2rem;
+  color: var(--gold);
+}
+
+/* ===== MENU ===== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  background: var(--bg-deep);
+  padding: 2.5rem;
+  border-left: 3px solid var(--terracotta);
+  position: relative;
+  transition: transform 0.4s, border-color 0.4s;
+}
+
+.menu-card:hover {
+  transform: translateX(5px);
+  border-left-color: var(--gold);
+}
+
+.menu-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed rgba(212, 168, 84, 0.3);
+}
+
+.menu-card .it-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.menu-card .price {
+  font-family: 'Italianno', cursive;
+  font-size: 1.8rem;
+  color: var(--terracotta);
+}
+
+.menu-card h4 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.1rem;
+  color: var(--ivory);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.menu-card p {
+  color: var(--text-mute);
+  font-size: 0.88rem;
+  line-height: 1.9;
+}
+
+.menu-card .tag {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.2rem 0.8rem;
+  background: rgba(200, 85, 61, 0.2);
+  color: var(--terracotta);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  border: 1px solid rgba(200, 85, 61, 0.3);
+}
+
+/* ===== INTERIOR (GALLERY) ===== */
+.interior {
+  background: var(--bg-deep);
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.interior-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 200px;
+  gap: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-item-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s;
+}
+
+.gallery-item:hover .gallery-item-bg { transform: scale(1.08); }
+
+.g1 {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(135deg, var(--terracotta), var(--wine));
+}
+.g2 { background: linear-gradient(135deg, var(--gold), var(--terracotta-deep)); }
+.g3 { background: linear-gradient(135deg, var(--bg-warm), var(--terracotta)); }
+.g4 { background: linear-gradient(135deg, var(--wine), var(--bg-deep)); }
+.g5 { background: linear-gradient(135deg, var(--olive), var(--bg-warm)); }
+
+.gallery-item .label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: 'Italianno', cursive;
+  font-size: 1.5rem;
+  color: var(--ivory);
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* ===== VOICE ===== */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.voice-card {
+  background: var(--bg-deep);
+  padding: 2.5rem 2rem;
+  border-top: 3px solid var(--gold);
+  position: relative;
+}
+
+.voice-card::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  color: var(--terracotta);
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.voice-card .stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.voice-card p {
+  color: var(--text-light);
+  font-size: 0.92rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.voice-card .who {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* ===== ACCESS ===== */
+.access {
+  background: var(--bg-deep);
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.access-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.access-info dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem 2rem;
+  font-size: 0.95rem;
+}
+
+.access-info dt {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  padding-top: 4px;
+}
+
+.access-info dd {
+  color: var(--text-light);
+  border-bottom: 1px dashed rgba(212, 168, 84, 0.2);
+  padding-bottom: 1.2rem;
+}
+
+.access-map {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--bg-warm), var(--terracotta-deep));
+  position: relative;
+  border: 1px solid var(--gold);
+}
+
+.access-map-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Italianno', cursive;
+  font-size: 3rem;
+  color: var(--gold-light);
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  background:
+    radial-gradient(ellipse at center, var(--terracotta) 0%, var(--wine) 50%, var(--bg-dark) 100%);
+  color: var(--ivory);
+  max-width: 100%;
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0, transparent 3px, rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 6px);
+}
+
+.contact-inner {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact .section-mark .it { color: var(--gold-light); }
+.contact .section-mark .jp { color: var(--ivory); }
+
+.contact-text {
+  font-family: 'Italianno', cursive;
+  font-size: 2.5rem;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.contact-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1rem;
+  color: var(--ivory);
+  margin-bottom: 3rem;
+  letter-spacing: 0.2em;
+}
+
+.contact-info {
+  margin: 3rem 0;
+}
+
+.contact-info .tel {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  color: var(--ivory);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-info .hours {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-light);
+}
+
+.btn-light {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: var(--ivory);
+  color: var(--wine);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  transition: all 0.4s;
+  border: 1px solid var(--ivory);
+}
+
+.btn-light:hover {
+  background: transparent;
+  color: var(--ivory);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--bg-dark);
+  color: var(--text-mute);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(212, 168, 84, 0.2);
+}
+
+footer .logo {
+  margin-bottom: 1rem;
+}
+
+footer .copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: rgba(168, 148, 120, 0.6);
+  margin-top: 1.5rem;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  nav ul { gap: 1rem; }
+  nav a { font-size: 0.7rem; }
+  .story-grid, .access-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .menu-grid, .voice-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 150px 150px 150px; }
+  .g1 { grid-column: span 2; grid-row: span 2; }
+  .hero-ornament { display: none; }
+  section { padding: 5rem 1.5rem; }
+  .menu-card, .voice-card { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">
+      Sole
+      <span>TRATTORIA</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#story">STORY</a></li>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="#interior">INTERIOR</a></li>
+        <li><a href="#voice">VOICE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-ornament tl">S</div>
+  <div class="hero-ornament br">o</div>
+  <div class="hero-content">
+    <div class="hero-mark">— DAL 2012 —</div>
+    <h1>Trattoria Sole</h1>
+    <div class="ja">トラットリア ソーレ</div>
+    <p class="hero-sub">
+      Il sapore autentico dell'Italia, nel cuore di Osaka.<br>
+      北新地の片隅に灯る、本物のイタリアの夜。
+    </p>
+    <a href="#contact" class="btn-primary">RISERVAZIONE</a>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="section-mark">
+      <span class="it">Il Nostro Racconto</span>
+      <span class="jp">私たちの物語</span>
+    </div>
+    <div class="story-grid">
+      <div class="story-image">
+        <div class="story-image-text">Sole</div>
+      </div>
+      <div class="story-text">
+        <h3>
+          <em>"Sole"</em>
+          太陽を、皿の上に。
+        </h3>
+        <p>
+          シェフが10年間修行を積んだのは、イタリア・トスカーナの小さな田舎町。そこで出会ったのは、技巧を凝らした料理ではなく、太陽と大地と人の温もりが詰まった、素朴で力強い一皿でした。
+        </p>
+        <p>
+          帰国後、北新地の片隅にこの店を構えたのは2012年のこと。「ソーレ」とはイタリア語で太陽。あの日トスカーナで浴びた光を、この店で皆様にお届けしたい——その想いは、今も変わりません。
+        </p>
+        <p>
+          毎朝市場で選び抜く食材、丁寧に仕込む自家製パスタ、薪窯で焼き上げるピッツァ。すべては、一皿の太陽のために。
+        </p>
+        <p class="signature">— Chef Takahashi</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="section-mark">
+    <span class="it">Menù</span>
+    <span class="jp">お品書き</span>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-head">
+        <div class="it-name">Antipasto Misto</div>
+        <div class="price">¥2,800</div>
+      </div>
+      <h4>本日の前菜盛り合わせ</h4>
+      <p>市場直送の魚介と、自家製サラミ・チーズを中心に7種類。シェフのおまかせでお出しいたします。</p>
+      <span class="tag">CHEF'S CHOICE</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-head">
+        <div class="it-name">Pasta del Giorno</div>
+        <div class="price">¥2,400</div>
+      </div>
+      <h4>本日の自家製パスタ</h4>
+      <p>毎朝打ちたての生パスタを、季節の食材と合わせて。手打ちならではのもちもちした食感をお楽しみください。</p>
+      <span class="tag">HOMEMADE</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-head">
+        <div class="it-name">Pizza Margherita</div>
+        <div class="price">¥2,200</div>
+      </div>
+      <h4>マルゲリータ</h4>
+      <p>イタリア産小麦で仕込んだ生地を、薪窯で500℃の高温で焼き上げ。シンプルだからこそ素材の力が光る一皿。</p>
+      <span class="tag">SIGNATURE</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-head">
+        <div class="it-name">Bistecca Fiorentina</div>
+        <div class="price">¥6,800</div>
+      </div>
+      <h4>ビステッカ・フィオレンティーナ</h4>
+      <p>トスカーナの伝統料理。骨付きの牛肉を炭火で豪快に焼き上げ、岩塩とオリーブオイルだけでシンプルに。</p>
+      <span class="tag">SPECIALTY</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-head">
+        <div class="it-name">Tiramisù della Casa</div>
+        <div class="price">¥980</div>
+      </div>
+      <h4>自家製ティラミス</h4>
+      <p>マスカルポーネをたっぷり使った、当店自慢の濃厚ティラミス。エスプレッソの香りが余韻に残ります。</p>
+      <span class="tag">DOLCE</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-head">
+        <div class="it-name">Corso Sole</div>
+        <div class="price">¥8,800</div>
+      </div>
+      <h4>シェフおまかせコース</h4>
+      <p>前菜・パスタ・メイン・ドルチェ全6皿。その日一番のおすすめを、シェフ自らがコーディネート。</p>
+      <span class="tag">RECOMMENDED</span>
+    </div>
+  </div>
+</section>
+
+<section class="interior" id="interior">
+  <div class="interior-inner">
+    <div class="section-mark">
+      <span class="it">Atmosfera</span>
+      <span class="jp">店内のご案内</span>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><div class="gallery-item-bg g1"></div><span class="label">Main Hall</span></div>
+      <div class="gallery-item"><div class="gallery-item-bg g2"></div><span class="label">Wine</span></div>
+      <div class="gallery-item"><div class="gallery-item-bg g3"></div><span class="label">Forno</span></div>
+      <div class="gallery-item"><div class="gallery-item-bg g4"></div><span class="label">Cantina</span></div>
+      <div class="gallery-item"><div class="gallery-item-bg g5"></div><span class="label">Terrazza</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="voice" id="voice">
+  <div class="section-mark">
+    <span class="it">Voci dei Clienti</span>
+    <span class="jp">お客様の声</span>
+  </div>
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="stars">★★★★★</div>
+      <p>初めての記念日に伺いました。ビステッカの迫力に夫婦で感動！シェフが席まで来て話してくださり、まるでイタリアの田舎町にワープしたみたいでした。</p>
+      <p class="who">— K.M. 様</p>
+    </div>
+    <div class="voice-card">
+      <div class="stars">★★★★★</div>
+      <p>パスタの歯ごたえが本当に素晴らしい。本場で食べたあの味そのもの。ワインのセレクトもセンス抜群で、リピート確定です。</p>
+      <p class="who">— T.A. 様</p>
+    </div>
+    <div class="voice-card">
+      <div class="stars">★★★★★</div>
+      <p>北新地で大人がゆっくり過ごせる、貴重な一軒。照明と音楽の塩梅が絶妙で、料理だけでなく空気そのものが美味しい。</p>
+      <p class="who">— S.Y. 様</p>
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="access-inner">
+    <div class="section-mark">
+      <span class="it">Accesso</span>
+      <span class="jp">店舗情報</span>
+    </div>
+    <div class="access-grid">
+      <div class="access-info">
+        <dl>
+          <dt>NOME</dt>
+          <dd>Trattoria Sole / トラットリア ソーレ</dd>
+          <dt>INDIRIZZO</dt>
+          <dd>大阪市北区曽根崎新地1-X-X<br>北新地ガーデンビル B1F</dd>
+          <dt>TELEFONO</dt>
+          <dd>06-XXXX-XXXX</dd>
+          <dt>ORARI</dt>
+          <dd>17:30 – 23:00（L.O. 22:00）</dd>
+          <dt>CHIUSO</dt>
+          <dd>日曜日・祝日</dd>
+          <dt>ACCESSO</dt>
+          <dd>JR東西線「北新地駅」徒歩4分</dd>
+        </dl>
+      </div>
+      <div class="access-map">
+        <div class="access-map-text">Mappa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-mark">
+      <span class="it">Riservazione</span>
+      <span class="jp">ご予約</span>
+    </div>
+    <p class="contact-text">Vi aspettiamo a Sole.</p>
+    <p class="contact-jp">— あなたの太陽の一皿、お待ちしております —</p>
+    <div class="contact-info">
+      <div class="tel">06-XXXX-XXXX</div>
+      <div class="hours">RESERVATION  /  17:30 – 23:00</div>
+    </div>
+    <a href="mailto:info@trattoria-sole.example" class="btn-light">PRENOTA ONLINE</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">
+    Sole
+    <span>TRATTORIA</span>
+  </div>
+  <p class="copy">© 2026 TRATTORIA SOLE. Tutti i diritti riservati.</p>
+</footer>
+
+</body>
+</html>
